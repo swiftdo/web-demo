@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               children: [
                 Text(
-                  'DesignTools',
+                  'OldBirds',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -151,74 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 400,
-                color: Colors.white,
-                padding: EdgeInsets.only(top: 60),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: Wrap(
-                        direction: Axis.vertical,
-                        spacing: 10,
-                        children: [
-                          Text(
-                            '导航',
-                            style: TextStyle(
-                              color: Color(0xff333333),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text('首页'),
-                          Text('工具库'),
-                          Text('首页'),
-                          Text('工具库'),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Wrap(
-                        direction: Axis.vertical,
-                        spacing: 10,
-                        children: [
-                          Text(
-                            '小伙伴们',
-                            style: TextStyle(
-                              color: Color(0xff333333),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text('首页'),
-                          Text('工具库'),
-                          Text('首页'),
-                          Text('工具库'),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Wrap(
-                        direction: Axis.vertical,
-                        spacing: 10,
-                        children: [
-                          Text(
-                            '关于我',
-                            style: TextStyle(
-                              color: Color(0xff333333),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text('Designed & Developed by:'),
-                          Text('Oldbirds'),
-                          Text('Copyright © 2021 Oldbirds'),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              )
+              SiteFooter()
             ],
           ),
         ),
@@ -260,6 +193,84 @@ class _MyHomePageState extends State<MyHomePage> {
           top: 0,
         )
       ],
+    );
+  }
+}
+
+class SiteFooter extends StatelessWidget {
+  const SiteFooter({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 400,
+      color: Colors.white,
+      padding: EdgeInsets.only(top: 60),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: Wrap(
+              direction: Axis.vertical,
+              spacing: 10,
+              children: [
+                Text(
+                  '导航',
+                  style: TextStyle(
+                    color: Color(0xff333333),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('首页'),
+                Text('工具库'),
+                Text('首页'),
+                Text('工具库'),
+              ],
+            ),
+          ),
+          Container(
+            child: Wrap(
+              direction: Axis.vertical,
+              spacing: 10,
+              children: [
+                Text(
+                  '小伙伴们',
+                  style: TextStyle(
+                    color: Color(0xff333333),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('首页'),
+                Text('工具库'),
+                Text('首页'),
+                Text('工具库'),
+              ],
+            ),
+          ),
+          Container(
+            child: Wrap(
+              direction: Axis.vertical,
+              spacing: 10,
+              children: [
+                Text(
+                  '关于我',
+                  style: TextStyle(
+                    color: Color(0xff333333),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text('Designed & Developed by:'),
+                Text('Oldbirds'),
+                Text('Copyright © 2021 Oldbirds'),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
