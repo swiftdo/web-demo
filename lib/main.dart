@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:web_demo/locator.dart';
 import 'package:web_demo/pages/home_page.dart';
+import 'package:router_impl/router_impl.dart';
+import 'package:web_demo/services/router/router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'OldBirds',
+    RouterImpl impl = RouterImpl(
+        parser: LocationParserImpl(homeRouteBuilder: _homeRouteBuilder),
+        homeRouteBuilder: _homeRouteBuilder);
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+      routeInformationParser: impl.routeInformationParser,
+      routerDelegate: impl.routerDelegate,
     );
+  }
+
+  HomeRoute _homeRouteBuilder() {
+    return HomeRoute(builder: () {
+      return HomePage();
+    });
   }
 }
