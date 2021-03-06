@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:web_demo/components/item_section.dart';
 import 'package:web_demo/components/nav_content.dart';
 import 'package:web_demo/components/site_footer.dart';
+import 'package:web_demo/locator.dart';
+import 'package:web_demo/services/api/api.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    locator<Api>().fetchArticleList(pageNo: 1);
     return Scaffold(
         backgroundColor: Color(0xffF3F3F3),
         appBar: AppBar(
