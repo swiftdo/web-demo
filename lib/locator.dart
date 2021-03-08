@@ -7,7 +7,7 @@ GetIt locator = GetIt.instance;
 
 setupLocator() {
   // 配置项目环境
-  locator.registerSingleton<Config>(ConfigProduct());
+  locator.registerSingleton<Config>(ConfigDebug());
   locator.registerFactory<PlatformRepository>(() => PlatformRepositoryImpl());
   locator.registerLazySingleton<Api>(() => Api());
 }

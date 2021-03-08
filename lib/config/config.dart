@@ -5,7 +5,10 @@ abstract class Config {
 }
 
 /// 开发环境
-class ConfigDebug extends Config {}
+class ConfigDebug extends Config {
+  @override
+  String get baseUrl => "http://localhost:4400/http/";
+}
 
 /// 预发布环境
 class ConfigPreview extends Config {}
