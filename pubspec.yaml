@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   pull_to_refresh: ^1.6.4
   oktoast: ^3.0.0
+  responsive_builder: ^0.3.0
 
   router_impl:
     path: plugins/router_impl

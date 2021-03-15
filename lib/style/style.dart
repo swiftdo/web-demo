@@ -6,6 +6,6 @@ class Style {
   static const Color subTextColor = const Color(0xffa8a8a8);
   static const Color bgColor = const Color(0xffF3F3F3);
 
-  static const double bodyWidth = 960;
-  static const double sideWidth = 240;
+  static const double bodyWidth = 900;
+  static const double sideWidth = 220;
 }
