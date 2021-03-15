@@ -11,6 +11,8 @@ class Article extends BaseModel {
   String title;
   Category category;
 
+  String content;
+
   int viewCount;
   int likeCount;
 
@@ -25,6 +27,7 @@ class Article extends BaseModel {
     category = Category.fromMap(ValueUtil.toMap(json['category']));
     viewCount = ValueUtil.toInt(json['view_count']);
     likeCount = ValueUtil.toInt(json['like_count']);
+    content = ValueUtil.toStr(json['content']);
   }
 }
 
