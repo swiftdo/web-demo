@@ -19,7 +19,6 @@ class Api {
     final response = await _dio
         .get('list', queryParameters: {'pageNo': pageNo, 'pageSize': pageSize});
     Map data = response.data;
-    print(data);
     return data;
   }
 }
