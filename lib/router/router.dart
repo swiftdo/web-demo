@@ -1,25 +1,19 @@
-import 'package:flutter/material.dart';
 import 'package:router_impl/router_impl.dart';
-import 'package:web_demo/pages/category_articles_page.dart';
+import 'package:web_demo/router/home_route.dart';
 
 import 'category_articles_route.dart';
 import 'detail_route.dart';
 import 'unkonw_route.dart';
 
+/// 业务层
 class LocationParserImpl extends LocationParser {
-  final HomeRoute Function() homeRouteBuilder;
-
-  LocationParserImpl({
-    @required this.homeRouteBuilder,
-  });
-
   @override
   AppRoute parse(String location) {
     Uri uri = Uri.parse(location);
 
     /// 首页
     if (uri.pathSegments.isEmpty) {
-      return homeRouteBuilder();
+      return HomeRoute();
     }
 
     ///

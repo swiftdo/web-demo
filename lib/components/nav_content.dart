@@ -3,6 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:router_impl/app_route.dart';
 import 'package:router_impl/app_router_delegate.dart';
 import 'package:web_demo/pages/home_page.dart';
+import 'package:web_demo/router/home_route.dart';
 import 'package:web_demo/style/style.dart';
 
 class NavContent extends StatelessWidget {
@@ -28,9 +29,7 @@ class NavContent extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           AppRouter.of(context).setNewRoutePath(
-                            HomeRoute(builder: () {
-                              return HomePage();
-                            }),
+                            HomeRoute(),
                           );
                         },
                         child: Text(

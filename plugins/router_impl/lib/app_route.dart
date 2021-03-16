@@ -19,10 +19,12 @@ abstract class AppRoute {
   }
 }
 
-class HomeRoute extends AppRoute {
-  final Widget Function() builder;
+typedef AppHomeRouteChildBuilder = Widget Function();
 
-  HomeRoute({@required this.builder});
+abstract class AppHomeRoute extends AppRoute {
+  AppHomeRouteChildBuilder get builder;
+
+  AppHomeRoute();
 
   @override
   String get location => "/";

@@ -5,17 +5,18 @@ import 'app_route.dart';
 
 class RouterImpl {
   final LocationParser parser;
-  final HomeRoute Function() homeRouteBuilder;
-
+  final AppHomeRoute homeRoute;
   final RouteInformationParser<Object> routeInformationParser;
   final RouterDelegate<Object> routerDelegate;
 
   RouterImpl({
     @required this.parser,
-    @required this.homeRouteBuilder,
+    @required this.homeRoute,
   })  : routeInformationParser = AppRouteInformationParser(parser),
         routerDelegate = AppRouterDelegate(
-            router: AppRouter(parser: parser, homeRoute: homeRouteBuilder()));
-
-  static AppRouter of(BuildContext context) => AppRouter.of(context);
+          router: AppRouter(
+            parser: parser,
+            homeRoute: homeRoute,
+          ),
+        );
 }

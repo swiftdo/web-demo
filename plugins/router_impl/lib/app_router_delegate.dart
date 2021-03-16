@@ -10,7 +10,7 @@ Key _homeKey = const Key('root');
 class AppRouter extends ChangeNotifier {
   final LocationParser parser;
 
-  final HomeRoute homeRoute;
+  final AppHomeRoute homeRoute;
 
   AppRouter({
     @required this.parser,
@@ -25,8 +25,7 @@ class AppRouter extends ChangeNotifier {
     ];
   }
 
-  static AppRouter of(BuildContext context) =>
-      Provider.of(context, listen: false);
+  static AppRouter of(BuildContext context) => Provider.of(context, listen: false);
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -48,8 +47,10 @@ class AppRouter extends ChangeNotifier {
     // 将uri 和 data 转换为 approute，然后调用 setNewRoutePath
   }
 
+  /// 还需要个 pop 操作
+
   Future<void> setNewRoutePath(AppRoute configuration) async {
-    if (configuration is HomeRoute) {
+    if (configuration is AppHomeRoute) {
       _pages.removeWhere((element) => element.key != _homeKey);
     } else {
       _pages.add(configuration.createPage());
@@ -76,9 +77,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
           key: navigatorKey,
           onPopPage: _handleOnPopPage,
           pages: router.pages,
-          transitionDelegate: kIsWeb
-              ? NoAnimationTransitionDelegate()
-              : DefaultTransitionDelegate(),
+          transitionDelegate: kIsWeb ? NoAnimationTransitionDelegate() : DefaultTransitionDelegate(),
         ),
       ),
     );
