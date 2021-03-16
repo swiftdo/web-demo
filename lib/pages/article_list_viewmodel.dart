@@ -4,16 +4,19 @@ import 'package:web_demo/locator.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/services/api/api.dart';
 
-class HomeViewModel extends ViewStateRefreshListModel {
+class ArticleListViewModel extends ViewStateRefreshListModel {
   final Api api = locator<Api>();
 
-  HomeViewModel() {
+  final String categoryId;
+
+  ArticleListViewModel({this.categoryId}) {
     initData();
   }
 
   @override
   Future<List<Article>> loadData({int pageNum}) async {
-    Map res = await api.fetchArticleList(pageNo: pageNum, pageSize: pageSize);
+    Map res = await api.fetchArticleList(
+        pageNo: pageNum, pageSize: pageSize, categoryId: categoryId);
     return ValueUtil.toList(res['data'])
         .map((e) => Article.fromMap(e))
         .toList();

@@ -39,12 +39,20 @@ class ArticleCell extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          '#' + article.category.name,
-                          style: TextStyle(
-                            color: Style.primaryColor,
-                            fontSize: 12,
+                        GestureDetector(
+                          child: Text(
+                            '#' + article.category.name,
+                            style: TextStyle(
+                              color: Style.primaryColor,
+                              fontSize: 12,
+                            ),
                           ),
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            AppRouter.of(context).setNewRoutePath(
+                                CategoryArticlesRoute(
+                                    categoryId: article.category.id));
+                          },
                         ),
                         Text(
                           article.showDate,

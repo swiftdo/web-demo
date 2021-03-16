@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:router_impl/app_route.dart';
+import 'package:router_impl/app_router_delegate.dart';
+import 'package:web_demo/pages/home_page.dart';
 import 'package:web_demo/style/style.dart';
 
 class NavContent extends StatelessWidget {
@@ -22,12 +25,21 @@ class NavContent extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        'OldBirds',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Style.primaryColor,
+                      GestureDetector(
+                        onTap: () {
+                          AppRouter.of(context).setNewRoutePath(
+                            HomeRoute(builder: () {
+                              return HomePage();
+                            }),
+                          );
+                        },
+                        child: Text(
+                          'OldBirds',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Style.primaryColor,
+                          ),
                         ),
                       ),
                     ],
