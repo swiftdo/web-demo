@@ -4,18 +4,16 @@ import 'package:web_demo/models/models.dart';
 import 'package:web_demo/services/api/api.dart';
 
 class ArticleDetailViewModel extends ViewStateModel {
-  final String articleId;
-
   Article _article;
   Article get article => _article;
 
   final Api api = locator<Api>();
 
-  ArticleDetailViewModel({this.articleId}) {
-    fetchDetail();
+  ArticleDetailViewModel({String articleId}) {
+    fetchDetail(articleId);
   }
 
-  fetchDetail() async {
+  fetchDetail(String articleId) async {
     setBusy();
     Map res = await api.fetchArticleDetail(articleId: articleId);
     _article = Article.fromMap(res);
