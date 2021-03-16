@@ -16,6 +16,8 @@ class Article extends BaseModel {
   int viewCount;
   int likeCount;
 
+  String get showDetail => '# $title\n' + content;
+
   String get showDate => DateUtil.readTimestamp(publishDate);
 
   Article.fromMap(Map json) {

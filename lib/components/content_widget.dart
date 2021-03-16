@@ -5,7 +5,8 @@ import 'package:web_demo/style/style.dart';
 
 class ContentWidget extends StatelessWidget {
   final Widget child;
-  ContentWidget({this.child});
+  final Widget sideChild;
+  ContentWidget({this.child, this.sideChild});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class ContentWidget extends StatelessWidget {
                 Expanded(
                   child: child,
                 ),
-                SideWidget(),
+                sideChild ?? SideWidget(),
               ],
             ),
             width: Style.bodyWidth,
