@@ -54,9 +54,29 @@ class ArticleDetailPage extends StatelessWidget {
     }
     return Container(
       margin: EdgeInsets.only(left: 16),
+      padding: EdgeInsets.all(16),
       color: Colors.white,
       child: TocListWidget(
         controller: tocController,
+        tocItem: (toc, isCurrent) {
+          return GestureDetector(
+            onTap: () {
+              tocController.scrollController.jumpTo(index: toc.index);
+            },
+            behavior: HitTestBehavior.opaque,
+            child: Container(
+              margin: EdgeInsets.only(left: 10.0 * toc.tagLevel, top: 10),
+              child: Text(
+                toc.name,
+                style: TextStyle(
+                  fontSize: isCurrent ? 16 : 14,
+                  color: isCurrent ? Colors.blue : null,
+                  fontWeight: isCurrent ? FontWeight.bold : null,
+                ),
+              ),
+            ),
+          );
+        },
       ),
       width: Style.sideWidth,
     );
