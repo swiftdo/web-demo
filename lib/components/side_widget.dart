@@ -19,7 +19,7 @@ class SideWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  '扫码关注微信公众号OldBirds',
+                  '扫码关注微信公众号OldBirds，入微信交流群！',
                 ),
                 Image.asset(
                   'assets/images/wechat_cobe.jpeg',
@@ -28,22 +28,6 @@ class SideWidget extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 16),
-            width: Style.sideWidth,
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(4)),
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('扫码加入 FlutterOldBirds 微信群'),
-                Image.asset(
-                  'assets/images/wechat_qun.jpg',
-                  fit: BoxFit.fitWidth,
-                )
-              ],
-            ),
-          )
         ],
       ),
     );

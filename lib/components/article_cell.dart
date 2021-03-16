@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:router_impl/app_router_delegate.dart';
 import 'package:web_demo/models/models.dart';
-import 'package:web_demo/services/router/router.dart';
+import 'package:web_demo/router/category_articles_route.dart';
+import 'package:web_demo/router/detail_route.dart';
 import 'package:web_demo/style/style.dart';
 
 class ArticleCell extends StatelessWidget {
@@ -13,8 +14,7 @@ class ArticleCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppRouter.of(context)
-            .setNewRoutePath(DetailRoute(articleId: article.id));
+        AppRouter.of(context).setNewRoutePath(DetailRoute(articleId: article.id));
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
