@@ -3,6 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:router_impl/app_route.dart';
 import 'package:router_impl/app_router_delegate.dart';
 import 'package:web_demo/pages/home_page.dart';
+import 'package:web_demo/router/about_route.dart';
 import 'package:web_demo/router/home_route.dart';
 import 'package:web_demo/style/style.dart';
 
@@ -41,6 +42,23 @@ class NavContent extends StatelessWidget {
                           ),
                         ),
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          AppRouter.of(context).setNewRoutePath(
+                            AboutRoute(),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: 30),
+                          child: Text(
+                            '关于',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Style.mainTextColor,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ],

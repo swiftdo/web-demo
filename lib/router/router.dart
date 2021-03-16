@@ -1,9 +1,9 @@
 import 'package:router_impl/router_impl.dart';
-import 'package:web_demo/router/home_route.dart';
-
+import 'about_route.dart';
+import 'home_route.dart';
 import 'category_articles_route.dart';
 import 'detail_route.dart';
-import 'unkonw_route.dart';
+import 'unknown_route.dart';
 
 /// 业务层
 class LocationParserImpl extends LocationParser {
@@ -18,6 +18,10 @@ class LocationParserImpl extends LocationParser {
 
     ///
     if (uri.pathSegments.length == 1) {
+      String path = uri.pathSegments[0];
+      if (path == 'about') {
+        return AboutRoute();
+      }
     } else if (uri.pathSegments.length == 2) {
       String path = uri.pathSegments[0];
       String id = uri.pathSegments[1];

@@ -14,6 +14,7 @@ class CategoryArticlesRoute extends AppRoute {
   @override
   Widget get child => CategoryArticlesPage(categoryId: categoryId, params: data);
 
+  /// web 上显示的
   @override
   String get location => "/categoryArticles/$categoryId?$queryString";
 }
