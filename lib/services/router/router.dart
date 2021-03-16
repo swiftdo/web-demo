@@ -33,7 +33,8 @@ class LocationParserImpl extends LocationParser {
         }
       } else if (path == 'categoryArticles') {
         if (id != null) {
-          return CategoryArticlesRoute(categoryId: id);
+          return CategoryArticlesRoute(
+              categoryId: id, data: uri.queryParameters);
         }
       }
     }
@@ -44,13 +45,20 @@ class LocationParserImpl extends LocationParser {
 class CategoryArticlesRoute extends AppRoute {
   final String categoryId;
 
-  const CategoryArticlesRoute({this.categoryId});
+  final Map<String, dynamic> data;
+
+  String get queryString => Uri(queryParameters: data).query;
+
+  const CategoryArticlesRoute({this.categoryId, this.data = const {}});
 
   @override
-  Widget get child => CategoryArticlesPage(categoryId: categoryId);
+  Widget get child => CategoryArticlesPage(
+        categoryId: categoryId,
+        params: data,
+      );
 
   @override
-  String get location => "/categoryArticles/$categoryId";
+  String get location => "/categoryArticles/$categoryId?$queryString";
 }
 
 class DetailRoute extends AppRoute {

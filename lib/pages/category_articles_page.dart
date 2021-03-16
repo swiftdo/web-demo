@@ -5,6 +5,7 @@ import 'package:web_demo/components/article_cell.dart';
 import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/core/provider/view_state.dart';
 import 'package:web_demo/core/util/ui_util.dart';
+import 'package:web_demo/core/util/value_util.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/style/style.dart';
 
@@ -13,7 +14,8 @@ import 'article_list_viewmodel.dart';
 ///
 class CategoryArticlesPage extends StatelessWidget {
   final String categoryId;
-  CategoryArticlesPage({this.categoryId});
+  final Map<String, dynamic> params;
+  CategoryArticlesPage({this.categoryId, this.params});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class CategoryArticlesPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '#推荐阅读',
+                                    '#${ValueUtil.toStr(params['title'])}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 24,

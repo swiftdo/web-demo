@@ -50,8 +50,13 @@ class ArticleCell extends StatelessWidget {
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
                             AppRouter.of(context).setNewRoutePath(
-                                CategoryArticlesRoute(
-                                    categoryId: article.category.id));
+                              CategoryArticlesRoute(
+                                categoryId: article.category.id,
+                                data: {
+                                  "title": article.category.name,
+                                },
+                              ),
+                            );
                           },
                         ),
                         Text(

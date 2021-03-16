@@ -41,6 +41,13 @@ class AppRouter extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool get canBack => pages.length > 1;
+
+  /// TODO: setNewRouteNamed('detail', data: {"a": 1, "b": 2})
+  setNewRouteNamed(String uri, {Map<String, dynamic> data = const {}}) {
+    // 将uri 和 data 转换为 approute，然后调用 setNewRoutePath
+  }
+
   Future<void> setNewRoutePath(AppRoute configuration) async {
     if (configuration is HomeRoute) {
       _pages.removeWhere((element) => element.key != _homeKey);
