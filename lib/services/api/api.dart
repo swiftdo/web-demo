@@ -3,10 +3,19 @@ import 'package:web_demo/config/config.dart';
 import 'package:web_demo/core/util/value_util.dart';
 import 'package:web_demo/locator.dart';
 
-class Api {
+abstract class Api {
+  /// 获取文章列表
+  /// [categoryId] 是文章分类id
+  Future<Map> fetchArticleList({int pageNo, int pageSize = 20, String categoryId});
+
+  /// 获取文章详情
+  Future<Map> fetchArticleDetail({String articleId});
+}
+
+class ApiImpl implements Api {
   Dio _dio;
 
-  Api() {
+  ApiImpl() {
     _dio = Dio(
       BaseOptions(baseUrl: locator<Config>().baseUrl, connectTimeout: 20000, receiveTimeout: 20000),
     );

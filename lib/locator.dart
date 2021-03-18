@@ -14,5 +14,5 @@ setupLocator() {
     locator.registerSingleton<Config>(ConfigProduct());
   }
   locator.registerFactory<PlatformRepository>(() => PlatformRepositoryImpl());
-  locator.registerLazySingleton<Api>(() => Api());
+  locator.registerLazySingleton<Api>(() => ApiImpl());
 }
