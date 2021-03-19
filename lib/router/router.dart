@@ -9,12 +9,11 @@ import 'unknown_route.dart';
 class LocationParserImpl extends LocationParser {
   @override
   AppRoute parse(String location) {
+    print('$location');
     Uri uri = Uri.parse(location);
 
-    print(location);
-
     /// 首页
-    if (uri.pathSegments.isEmpty) {
+    if (uri.pathSegments.length == 0) {
       return HomeRoute();
     }
 

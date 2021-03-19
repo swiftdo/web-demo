@@ -93,6 +93,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   bool _handleOnPopPage(Route<dynamic> route, dynamic result) {
     final didPop = route.didPop(result);
     if (didPop) {
+      print('_handleOnPopPage::$route');
       router.didPop(route.settings);
     }
     return didPop;
