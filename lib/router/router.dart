@@ -11,6 +11,8 @@ class LocationParserImpl extends LocationParser {
   AppRoute parse(String location) {
     Uri uri = Uri.parse(location);
 
+    print(location);
+
     /// 首页
     if (uri.pathSegments.isEmpty) {
       return HomeRoute();

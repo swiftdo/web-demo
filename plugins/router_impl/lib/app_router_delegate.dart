@@ -47,16 +47,23 @@ class AppRouter extends ChangeNotifier {
     // 将uri 和 data 转换为 approute，然后调用 setNewRoutePath
   }
 
-  /// 还需要个 pop 操作
+  void pop() {
+    if (_pages.length > 1) {
+      _pages.removeLast();
+      notifyListeners();
+    }
+  }
+
+  void push(AppRoute configuration) {
+    _pages.add(configuration.createPage());
+    notifyListeners();
+  }
 
   Future<void> setNewRoutePath(AppRoute configuration) async {
-    if (configuration is AppHomeRoute) {
-      _pages.removeWhere((element) => element.key != _homeKey);
-    } else {
-      _pages.add(configuration.createPage());
-    }
-    notifyListeners();
-    return;
+    _pages
+      ..clear()
+      ..add(configuration.createPage());
+    return SynchronousFuture<void>(null);
   }
 }
 
@@ -106,5 +113,10 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   @override
   Future<void> setNewRoutePath(AppRoute configuration) {
     return router.setNewRoutePath(configuration);
+  }
+
+  @override
+  Future<void> setInitialRoutePath(AppRoute configuration) {
+    return setNewRoutePath(configuration);
   }
 }

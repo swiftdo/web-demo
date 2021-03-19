@@ -29,7 +29,7 @@ class NavContent extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          AppRouter.of(context).setNewRoutePath(
+                          AppRouter.of(context).push(
                             HomeRoute(),
                           );
                         },
@@ -44,7 +44,7 @@ class NavContent extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          AppRouter.of(context).setNewRoutePath(
+                          AppRouter.of(context).push(
                             AboutRoute(),
                           );
                         },

@@ -14,7 +14,7 @@ class ArticleCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppRouter.of(context).setNewRoutePath(DetailRoute(articleId: article.id));
+        AppRouter.of(context).push(DetailRoute(articleId: article.id));
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
@@ -49,7 +49,7 @@ class ArticleCell extends StatelessWidget {
                           ),
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
-                            AppRouter.of(context).setNewRoutePath(
+                            AppRouter.of(context).push(
                               CategoryArticlesRoute(
                                 categoryId: article.category.id,
                                 data: {
