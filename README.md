@@ -2,9 +2,8 @@
 
 Flutter 2.0 快速构建的一个站点样例
 
-在线预览：[http://webdemo.loveli.site](http://webdemo.loveli.site)
-
-github ci构建的版本：[http://webdemo.oldbird.run](http://webdemo.oldbird.run)
+* 在线预览：[http://webdemo.loveli.site](http://webdemo.loveli.site)
+* github ci构建的版本：[http://webdemo.oldbird.run](http://webdemo.oldbird.run), hash 路由
 
 更多精彩，请关注官方微信公众号: **Oldbirds**
 
@@ -29,6 +28,15 @@ github ci构建的版本：[http://webdemo.oldbird.run](http://webdemo.oldbird.r
 * 3. 状态管理篇
 * 4. 路由篇
 * 5. url 策略篇
+    * HashUrlStrategy，hash 路由，带有`#`, 可直接 github 静态托管
+    * PathUrlStrategy, histroy 路由，也可以直接github托管，但是刷新页面会出问题，此类，需要 nginx 做个配置，单页面实际上只有一个页面index.html，因此将所有的页面都rewirte到index页面，即可完成配置
+        
+      ```nginx
+      location @router {
+          rewrite ^.*$ /index.html break;
+      } 
+      ```
+    
 * 6. 上线部署篇
     * [在 Github 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t5-flutter-web-deploy.html#flutter-web)
     * [在 Docker 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t6-docker-web-deploy.html)
