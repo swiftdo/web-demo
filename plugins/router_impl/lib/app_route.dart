@@ -12,9 +12,10 @@ abstract class AppRoute {
 
   Page<T> createPage<T>({Key key}) {
     return AdaptivePage.create(
-      child: child,
       key: key ?? UniqueKey(),
+      child: child,
       name: location,
+      arguments: this,
     );
   }
 }

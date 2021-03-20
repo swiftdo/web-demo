@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routeInformationParser: impl.routeInformationParser,
       routerDelegate: impl.routerDelegate,
+      backButtonDispatcher: impl.backButtonDispatcher,
     );
   }
 }

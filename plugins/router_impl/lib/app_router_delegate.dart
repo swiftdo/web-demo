@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'app_route.dart';
 import 'transitions.dart';
 import 'parser.dart';
@@ -17,6 +18,7 @@ class AppRouter extends ChangeNotifier {
     @required this.homeRoute,
     Key homeKey,
   }) {
+    print("AppRouter 初始化");
     if (homeKey != null) {
       _homeKey = homeKey;
     }
@@ -25,7 +27,8 @@ class AppRouter extends ChangeNotifier {
     ];
   }
 
-  static AppRouter of(BuildContext context) => Provider.of(context, listen: false);
+  static AppRouter of(BuildContext context) =>
+      Provider.of(context, listen: false);
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -33,37 +36,44 @@ class AppRouter extends ChangeNotifier {
 
   List<Page> _pages = [];
 
-  AppRoute get currentRoute => parser.parse(_pages.last.name);
+  AppRoute get currentRoute => _pages.last.arguments as AppRoute;
 
   void didPop(Page page) {
+    print('🦌didPop');
     _pages.remove(page);
-    notifyListeners();
+    _notify();
   }
 
-  bool get canBack => pages.length > 1;
-
-  /// TODO: setNewRouteNamed('detail', data: {"a": 1, "b": 2})
-  setNewRouteNamed(String uri, {Map<String, dynamic> data = const {}}) {
-    // 将uri 和 data 转换为 approute，然后调用 setNewRoutePath
-  }
-
-  void pop() {
+  Future<bool> pop() {
+    print('🦌pop');
     if (_pages.length > 1) {
-      _pages.removeLast();
-      notifyListeners();
+      didPop(_pages.last);
+      return Future.value(true);
     }
+    return Future.value(false);
   }
 
-  void push(AppRoute configuration) {
-    _pages.add(configuration.createPage());
-    notifyListeners();
+  void push(AppRoute route) {
+    print('🦌push');
+    setNewRoutePath(route);
   }
 
   Future<void> setNewRoutePath(AppRoute configuration) async {
-    _pages
-      ..clear()
-      ..add(configuration.createPage());
+    _pages.add(configuration.createPage());
+    _notify();
     return SynchronousFuture<void>(null);
+  }
+
+  void _notify() {
+    print('⏰通知更新');
+    notifyListeners();
+  }
+
+  void replace(AppRoute route) {
+    if (_pages.isNotEmpty) {
+      _pages.removeLast();
+    }
+    push(route);
   }
 }
 
@@ -72,11 +82,13 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   final AppRouter router;
 
   AppRouterDelegate({this.router}) {
+    print("AppRouterDelegate init");
     router.addListener(notifyListeners);
   }
 
   @override
   Widget build(BuildContext context) {
+    print('AppRouterDelegate:: builder');
     return ChangeNotifierProvider<AppRouter>.value(
       value: router,
       child: Consumer<AppRouter>(
@@ -84,19 +96,23 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
           key: navigatorKey,
           onPopPage: _handleOnPopPage,
           pages: router.pages,
-          transitionDelegate: kIsWeb ? NoAnimationTransitionDelegate() : DefaultTransitionDelegate(),
+          transitionDelegate: kIsWeb
+              ? NoAnimationTransitionDelegate()
+              : DefaultTransitionDelegate(),
         ),
       ),
     );
   }
 
   bool _handleOnPopPage(Route<dynamic> route, dynamic result) {
-    final didPop = route.didPop(result);
-    if (didPop) {
-      print('_handleOnPopPage::$route');
-      router.didPop(route.settings);
+    if (!route.didPop(result)) {
+      return false;
     }
-    return didPop;
+    if (router.pages.isNotEmpty) {
+      router.didPop(route.settings);
+      return true;
+    }
+    return false;
   }
 
   @override
