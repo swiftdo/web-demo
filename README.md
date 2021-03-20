@@ -28,22 +28,27 @@ Flutter 2.0 快速构建的一个站点样例
 * 3. 状态管理篇
 * 4. 路由篇
 * 5. url 策略篇
-    * HashUrlStrategy，hash 路由，带有`#`, 可直接 github 静态托管
-    * PathUrlStrategy, histroy 路由，也可以直接github托管，但是刷新页面会出问题，此类，需要 nginx 做个配置，单页面实际上只有一个页面index.html，因此将所有的页面都rewirte到index页面，即可完成配置
-        
-      ```nginx
-      location @router {
-          rewrite ^.*$ /index.html break;
-      } 
-      ```
-    
 * 6. 上线部署篇
     * [在 Github 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t5-flutter-web-deploy.html#flutter-web)
     * [在 Docker 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t6-docker-web-deploy.html)
 
 
 ## web 开发存在的一些问题
-1. 包体积太大, [【编译渲染项】](https://flutter.cn/docs/development/tools/web-renderers)
-2. 手机端滑动太卡
-3. 中文显示有问题，会优先出现 x
+### 包体积太大
+[【编译渲染项】](https://flutter.cn/docs/development/tools/web-renderers)
+### 手机端滑动太卡
 
+### 中文显示有问题
+webgl 不能渲染文本，所以在加载谷歌字体
+
+### 页面刷新，无法访问
+
+跟 url 策略有关
+ * HashUrlStrategy，hash 路由，带有`#`, 可直接 github 静态托管
+ * PathUrlStrategy, histroy 路由，也可以直接github托管，但是刷新页面会出问题，此类，需要 nginx 做个配置，单页面实际上只有一个页面index.html，因此将所有的页面都rewirte到index页面，即可完成配置
+
+   ```nginx
+   location @router {
+       rewrite ^.*$ /index.html break;
+   } 
+   ```
