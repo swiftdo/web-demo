@@ -6,8 +6,6 @@ import 'transitions.dart';
 import 'parser.dart';
 import 'package:provider/provider.dart';
 
-Key _homeKey = const Key('root');
-
 class AppRouter extends ChangeNotifier {
   final LocationParser parser;
 
@@ -18,13 +16,7 @@ class AppRouter extends ChangeNotifier {
     @required this.homeRoute,
     Key homeKey,
   }) {
-    print("AppRouter 初始化");
-    if (homeKey != null) {
-      _homeKey = homeKey;
-    }
-    _pages = [
-      homeRoute.createPage(key: _homeKey),
-    ];
+    _paths = [homeRoute];
   }
 
   static AppRouter of(BuildContext context) =>
@@ -32,22 +24,22 @@ class AppRouter extends ChangeNotifier {
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  List<Page> get pages => List.unmodifiable(_pages);
+  List<AppRoute> get paths => List.unmodifiable(_paths);
 
-  List<Page> _pages = [];
+  List<AppRoute> _paths = [];
 
-  AppRoute get currentRoute => _pages.last.arguments as AppRoute;
+  AppRoute get currentRoute => _paths.last;
 
-  void didPop(Page page) {
+  void didPop(AppRoute path) {
     print('🦌didPop');
-    _pages.remove(page);
+    _paths.remove(path);
     _notify();
   }
 
   Future<bool> pop() {
     print('🦌pop');
-    if (_pages.length > 1) {
-      didPop(_pages.last);
+    if (_paths.length > 1) {
+      didPop(_paths.last);
       return Future.value(true);
     }
     return Future.value(false);
@@ -59,7 +51,7 @@ class AppRouter extends ChangeNotifier {
   }
 
   Future<void> setNewRoutePath(AppRoute configuration) async {
-    _pages.add(configuration.createPage());
+    _paths.add(configuration);
     _notify();
     return SynchronousFuture<void>(null);
   }
@@ -70,8 +62,8 @@ class AppRouter extends ChangeNotifier {
   }
 
   void replace(AppRoute route) {
-    if (_pages.isNotEmpty) {
-      _pages.removeLast();
+    if (_paths.isNotEmpty) {
+      _paths.removeLast();
     }
     push(route);
   }
@@ -95,7 +87,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
         builder: (context, router, _) => Navigator(
           key: navigatorKey,
           onPopPage: _handleOnPopPage,
-          pages: router.pages,
+          pages: router.paths.map((e) => e.createPage()).toList(),
           transitionDelegate: kIsWeb
               ? NoAnimationTransitionDelegate()
               : DefaultTransitionDelegate(),
@@ -105,11 +97,13 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   }
 
   bool _handleOnPopPage(Route<dynamic> route, dynamic result) {
+    print('_handleOnPopPage');
     if (!route.didPop(result)) {
       return false;
     }
-    if (router.pages.isNotEmpty) {
-      router.didPop(route.settings);
+    if (router.paths.isNotEmpty) {
+      print('_handleOnPopPage a');
+      router.didPop(route.settings as AppRoute);
       return true;
     }
     return false;
