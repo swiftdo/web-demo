@@ -17,22 +17,25 @@ class AppRouter extends ChangeNotifier {
     Key homeKey,
   }) {
     _paths = [homeRoute];
+    _pages = [homeRoute.createPage()];
   }
 
-  static AppRouter of(BuildContext context) =>
-      Provider.of(context, listen: false);
+  static AppRouter of(BuildContext context) => Provider.of(context, listen: false);
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   List<AppRoute> get paths => List.unmodifiable(_paths);
+  List<Page> get pages => List.unmodifiable(_pages);
 
   List<AppRoute> _paths = [];
+  List<Page> _pages = [];
 
   AppRoute get currentRoute => _paths.last;
 
   void didPop(AppRoute path) {
     print('🦌didPop');
     _paths.remove(path);
+    _pages.removeWhere((element) => (element.arguments as AppRoute) == path);
     _notify();
   }
 
@@ -40,9 +43,9 @@ class AppRouter extends ChangeNotifier {
     print('🦌pop');
     if (_paths.length > 1) {
       didPop(_paths.last);
-      return Future.value(true);
+      return SynchronousFuture(true);
     }
-    return Future.value(false);
+    return SynchronousFuture(false);
   }
 
   void push(AppRoute route) {
@@ -51,7 +54,9 @@ class AppRouter extends ChangeNotifier {
   }
 
   Future<void> setNewRoutePath(AppRoute configuration) async {
+    print("😁：：setNewRoutePath");
     _paths.add(configuration);
+    _pages.add(configuration.createPage());
     _notify();
     return SynchronousFuture<void>(null);
   }
@@ -59,13 +64,6 @@ class AppRouter extends ChangeNotifier {
   void _notify() {
     print('⏰通知更新');
     notifyListeners();
-  }
-
-  void replace(AppRoute route) {
-    if (_paths.isNotEmpty) {
-      _paths.removeLast();
-    }
-    push(route);
   }
 }
 
@@ -87,10 +85,8 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
         builder: (context, router, _) => Navigator(
           key: navigatorKey,
           onPopPage: _handleOnPopPage,
-          pages: router.paths.map((e) => e.createPage()).toList(),
-          transitionDelegate: kIsWeb
-              ? NoAnimationTransitionDelegate()
-              : DefaultTransitionDelegate(),
+          pages: router.pages,
+          transitionDelegate: kIsWeb ? NoAnimationTransitionDelegate() : DefaultTransitionDelegate(),
         ),
       ),
     );
