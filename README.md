@@ -27,7 +27,7 @@ Flutter 2.0 快速构建的一个站点样例
 * [2. 跨域篇](https://juejin.cn/post/6941744845803225102)
 * 3. 状态管理篇
 * 4. 路由篇
-* 5. url 策略篇
+* 5. url 策略篇：[配置 Web 应用的 URL 策略](https://flutter.cn/docs/development/ui/navigation/url-strategies)
 * 6. 上线部署篇
     * [在 Github 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t5-flutter-web-deploy.html#flutter-web)
     * [在 Docker 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t6-docker-web-deploy.html)
