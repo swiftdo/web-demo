@@ -15,7 +15,7 @@ import 'article_list_viewmodel.dart';
 class CategoryArticlesPage extends StatelessWidget {
   final String categoryId;
   final Map<String, dynamic> params;
-  CategoryArticlesPage({this.categoryId, this.params});
+  CategoryArticlesPage({required this.categoryId, required this.params});
 
   @override
   Widget build(BuildContext context) {

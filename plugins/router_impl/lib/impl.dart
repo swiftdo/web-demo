@@ -7,13 +7,14 @@ import 'app_route.dart';
 class RouterImpl {
   RouteInformationParser<Object> get routeInformationParser =>
       _routeInformationParser;
-  RouteInformationParser<Object> _routeInformationParser;
+  late RouteInformationParser<Object> _routeInformationParser;
   RouterDelegate<Object> get routerDelegate => _routerDelegate;
-  RouterDelegate<Object> _routerDelegate;
-  RootBackButtonDispatcher _backButtonDispatcher;
+  late RouterDelegate<Object> _routerDelegate;
+  late RootBackButtonDispatcher _backButtonDispatcher;
   RootBackButtonDispatcher get backButtonDispatcher => _backButtonDispatcher;
 
-  RouterImpl({LocationParser parser, AppHomeRoute homeRoute}) {
+  RouterImpl(
+      {required LocationParser parser, required AppHomeRoute homeRoute}) {
     _routeInformationParser = AppRouteInformationParser(parser);
     final router = AppRouter(parser: parser, homeRoute: homeRoute);
     _routerDelegate = AppRouterDelegate(router: router);

@@ -9,14 +9,14 @@ class ViewStateModel extends ChangeNotifier {
   bool _disposed = false;
 
   /// ViewStateError
-  ViewStateError _viewStateError;
-  ViewStateError get viewStateError => _viewStateError;
+  ViewStateError? _viewStateError;
+  ViewStateError? get viewStateError => _viewStateError;
 
   /// 当前的页面状态,默认为busy,可在viewModel的构造方法中指定;
-  ViewState _viewState;
+  late ViewState _viewState;
   ViewState get viewState => _viewState;
 
-  ViewStateModel({ViewState viewState})
+  ViewStateModel({ViewState? viewState})
       : _viewState = viewState ?? ViewState.idle {
     debugPrint('ViewStateModel---constructor--->$runtimeType');
   }
@@ -41,21 +41,21 @@ class ViewStateModel extends ChangeNotifier {
   }
 
   /// [e]分类Error和Exception两种
-  void setError(e, stackTrace, {String message}) {
+  void setError(e, stackTrace, {String? message}) {
     ViewStateErrorType errorType = ViewStateErrorType.defaultError;
 
     /// 见https://github.com/flutterchina/dio/blob/master/README-ZH.md#dioerrortype
     if (e is DioError) {
-      if (e.type == DioErrorType.CONNECT_TIMEOUT ||
-          e.type == DioErrorType.SEND_TIMEOUT ||
-          e.type == DioErrorType.RECEIVE_TIMEOUT) {
+      if (e.type == DioErrorType.connectTimeout ||
+          e.type == DioErrorType.sendTimeout ||
+          e.type == DioErrorType.receiveTimeout) {
         // timeout
         errorType = ViewStateErrorType.networkTimeOutError;
         message = e.error;
-      } else if (e.type == DioErrorType.RESPONSE) {
+      } else if (e.type == DioErrorType.response) {
         // incorrect status, such as 404, 503...
         message = e.error;
-      } else if (e.type == DioErrorType.CANCEL) {
+      } else if (e.type == DioErrorType.cancel) {
         // to be continue...
         message = e.error;
       } else {
@@ -71,21 +71,21 @@ class ViewStateModel extends ChangeNotifier {
       errorMessage: e.toString(),
     );
     printErrorStack(e, stackTrace);
-    onError(viewStateError);
+    onError(viewStateError!);
   }
 
   void onError(ViewStateError viewStateError) {}
 
   /// 显示错误消息
-  showErrorMessage(context, {String message}) {
+  showErrorMessage(context, {String? message}) {
     if (viewStateError != null || message != null) {
-      if (viewStateError.isNetworkTimeOut) {
+      if (viewStateError?.isNetworkTimeOut) {
         message ??= '网络错误';
       } else {
-        message ??= viewStateError.message;
+        message ??= viewStateError?.message;
       }
       Future.microtask(() {
-        showToast(message, context: context);
+        showToast(message!, context: context);
       });
     }
   }

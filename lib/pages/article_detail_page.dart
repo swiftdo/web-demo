@@ -14,7 +14,7 @@ class ArticleDetailPage extends StatelessWidget {
 
   final TocController tocController = TocController();
 
-  ArticleDetailPage({this.articleId});
+  ArticleDetailPage({required this.articleId});
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +42,13 @@ class ArticleDetailPage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: MarkdownWidget(
-        data: model.article.showDetail,
+        data: model.article!.showDetail,
         controller: tocController,
         padding: EdgeInsets.only(bottom: 50, left: 16, right: 16, top: 16),
         styleConfig: StyleConfig(pConfig: PConfig(onLinkTap: (url) {
-          launch(url);
+          if (url != null) {
+            launch(url);
+          }
         })),
       ),
     );

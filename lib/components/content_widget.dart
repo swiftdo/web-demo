@@ -5,8 +5,8 @@ import 'package:web_demo/style/style.dart';
 
 class ContentWidget extends StatelessWidget {
   final Widget child;
-  final Widget sideChild;
-  ContentWidget({this.child, this.sideChild});
+  final Widget? sideChild;
+  ContentWidget({required this.child, this.sideChild});
 
   @override
   Widget build(BuildContext context) {

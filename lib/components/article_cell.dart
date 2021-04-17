@@ -8,7 +8,7 @@ import 'package:web_demo/style/style.dart';
 class ArticleCell extends StatelessWidget {
   final Article article;
 
-  ArticleCell({@required this.article});
+  ArticleCell({required this.article});
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
+class NoAnimationTransitionDelegate<T> extends TransitionDelegate<T> {
   @override
-  Iterable<RouteTransitionRecord> resolve({
-    List<RouteTransitionRecord> newPageRouteHistory,
-    Map<RouteTransitionRecord, RouteTransitionRecord>
-        locationToExitingPageRoute,
-    Map<RouteTransitionRecord, List<RouteTransitionRecord>>
-        pageRouteToPagelessRoutes,
-  }) {
+  Iterable<RouteTransitionRecord> resolve(
+      {required List<RouteTransitionRecord> newPageRouteHistory,
+      required Map<RouteTransitionRecord?, RouteTransitionRecord>
+          locationToExitingPageRoute,
+      required Map<RouteTransitionRecord?, List<RouteTransitionRecord>>
+          pageRouteToPagelessRoutes}) {
     final List<RouteTransitionRecord> results = <RouteTransitionRecord>[];
 
     for (final RouteTransitionRecord pageRoute in newPageRouteHistory) {
@@ -22,7 +21,7 @@ class NoAnimationTransitionDelegate extends TransitionDelegate<void> {
         in locationToExitingPageRoute.values) {
       if (exitingPageRoute.isWaitingForExitingDecision) {
         exitingPageRoute.markForRemove();
-        final List<RouteTransitionRecord> pagelessRoutes =
+        final List<RouteTransitionRecord>? pagelessRoutes =
             pageRouteToPagelessRoutes[exitingPageRoute];
         if (pagelessRoutes != null) {
           for (final RouteTransitionRecord pagelessRoute in pagelessRoutes) {

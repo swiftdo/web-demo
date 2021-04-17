@@ -6,7 +6,7 @@ import 'transitions.dart';
 import 'parser.dart';
 import 'package:provider/provider.dart';
 
-Key _homeKey = const Key('root');
+LocalKey _homeKey = UniqueKey();
 
 class AppRouter extends ChangeNotifier {
   final LocationParser parser;
@@ -14,9 +14,9 @@ class AppRouter extends ChangeNotifier {
   final AppHomeRoute homeRoute;
 
   AppRouter({
-    @required this.parser,
-    @required this.homeRoute,
-    Key homeKey,
+    required this.parser,
+    required this.homeRoute,
+    LocalKey? homeKey,
   }) {
     print("AppRouter 初始化");
     if (homeKey != null) {
@@ -81,7 +81,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoute> {
   final AppRouter router;
 
-  AppRouterDelegate({this.router}) {
+  AppRouterDelegate({required this.router}) {
     print("AppRouterDelegate init");
     router.addListener(notifyListeners);
   }
@@ -97,8 +97,8 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
           onPopPage: _handleOnPopPage,
           pages: router.pages,
           transitionDelegate: kIsWeb
-              ? NoAnimationTransitionDelegate()
-              : DefaultTransitionDelegate(),
+              ? NoAnimationTransitionDelegate<dynamic>()
+              : const DefaultTransitionDelegate<dynamic>(),
         ),
       ),
     );
@@ -109,7 +109,8 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
       return false;
     }
     if (router.pages.isNotEmpty) {
-      router.didPop(route.settings);
+      // TODO: 有问题
+      // router.didPop(route);
       return true;
     }
     return false;

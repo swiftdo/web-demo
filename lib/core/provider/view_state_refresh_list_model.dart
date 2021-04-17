@@ -16,7 +16,7 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
   int _currentPageNum = pageNumFirst;
 
   /// 下拉刷新
-  Future<List<T>> refresh({bool init = false}) async {
+  Future<List<T>?> refresh({bool init = false}) async {
     try {
       _currentPageNum = pageNumFirst;
       var data = await loadData(pageNum: pageNumFirst);
@@ -50,7 +50,7 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
   }
 
   /// 上拉加载更多
-  Future<List<T>> loadMore() async {
+  Future<List<T>?> loadMore() async {
     try {
       var data = await loadData(pageNum: ++_currentPageNum);
       if (data.isEmpty) {
@@ -75,7 +75,7 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
   }
 
   // 加载数据
-  Future<List<T>> loadData({int pageNum});
+  Future<List<T>> loadData({int pageNum = 1});
 
   @override
   void dispose() {

@@ -5,7 +5,7 @@ import 'package:web_demo/pages/article_detail_page.dart';
 class DetailRoute extends AppRoute {
   final String articleId;
 
-  const DetailRoute({this.articleId});
+  const DetailRoute({required this.articleId});
   @override
   Widget get child => ArticleDetailPage(articleId: articleId);
 

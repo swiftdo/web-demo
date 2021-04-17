@@ -10,7 +10,7 @@ abstract class AppRoute {
   String get location;
   Widget get child;
 
-  Page<T> createPage<T>({Key key}) {
+  Page<T> createPage<T>({LocalKey? key}) {
     return AdaptivePage.create(
       key: key ?? UniqueKey(),
       child: child,
@@ -36,18 +36,14 @@ abstract class AppHomeRoute extends AppRoute {
 
 class AdaptivePage {
   static Page<T> create<T>({
-    @required Widget child,
+    required Widget child,
     bool maintainState = true,
     bool fullscreenDialog = false,
-    LocalKey key,
-    String name,
-    Object arguments,
-    String title,
+    LocalKey? key,
+    String? name,
+    Object? arguments,
+    String? title,
   }) {
-    assert(child != null);
-    assert(maintainState != null);
-    assert(fullscreenDialog != null);
-
     if (kIsWeb) {
       return MaterialPage<T>(
         key: key,

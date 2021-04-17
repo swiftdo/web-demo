@@ -4,12 +4,12 @@ import 'package:web_demo/models/models.dart';
 import 'package:web_demo/services/api/api.dart';
 
 class ArticleDetailViewModel extends ViewStateModel {
-  Article _article;
-  Article get article => _article;
+  Article? _article;
+  Article? get article => _article;
 
   final Api api = locator<Api>();
 
-  ArticleDetailViewModel({String articleId}) {
+  ArticleDetailViewModel({required String articleId}) {
     fetchDetail(articleId);
   }
 

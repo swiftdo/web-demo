@@ -20,7 +20,9 @@ class AboutPage extends StatelessWidget {
             styleConfig: StyleConfig(
               pConfig: PConfig(
                 onLinkTap: (url) {
-                  launch(url);
+                  if (url != null) {
+                    launch(url);
+                  }
                 },
               ),
             ),

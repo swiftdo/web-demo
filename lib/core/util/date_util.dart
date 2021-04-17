@@ -27,10 +27,10 @@ class DateUtil {
     return dateTime;
   }
 
-  static String getDateStrByMs(int milliseconds,
+  static String? getDateStrByMs(int milliseconds,
       {DateFormat format = DateFormat.NORMAL,
-      String dateSeparate,
-      String timeSeparate,
+      String? dateSeparate,
+      String? timeSeparate,
       bool isUtc = false}) {
     DateTime dateTime = getDateTimeByMs(milliseconds, isUtc: isUtc);
     return getDateStrByDateTime(dateTime,
@@ -49,10 +49,10 @@ class DateUtil {
         format == DateFormat.ZH_HOUR_MINUTE;
   }
 
-  static String getDateStrByDateTime(DateTime dateTime,
+  static String? getDateStrByDateTime(DateTime? dateTime,
       {DateFormat format = DateFormat.NORMAL,
-      String dateSeparate,
-      String timeSeparate}) {
+      String? dateSeparate,
+      String? timeSeparate}) {
     if (dateTime == null) return null;
     String dateStr = dateTime.toString();
     if (isZHFormat(format)) {
@@ -72,7 +72,7 @@ class DateUtil {
 
     /// 1969-07-20 20:18:04Z
     var date = getDateTimeByMs(timeMs);
-    var time = '';
+    String? time;
 
     // 同一年
     if (now.year == date.year) {
@@ -101,11 +101,11 @@ class DateUtil {
     } else {
       time = getDateStrByMs(timeMs, format: DateFormat.YEAR_MONTH_DAY);
     }
-    return time;
+    return time ?? '';
   }
 
   static String formatZHDateTime(
-      String time, DateFormat format, String timeSeparate) {
+      String time, DateFormat format, String? timeSeparate) {
     time = convertToZHDateTimeString(time, timeSeparate);
     switch (format) {
       case DateFormat.ZH_NORMAL: //yyyy年MM月dd日 HH时mm分ss秒
@@ -159,7 +159,7 @@ class DateUtil {
   /// dateSeparate    date separate.
   /// timeSeparate    time separate.
   static String formatDateTime(String time, DateFormat format,
-      String dateSeparate, String timeSeparate) {
+      String? dateSeparate, String? timeSeparate) {
     switch (format) {
       case DateFormat.NORMAL: //yyyy-MM-dd HH:mm:ss
         time = time.substring(0, "yyyy-MM-dd HH:mm:ss".length);
@@ -193,7 +193,7 @@ class DateUtil {
     return time;
   }
 
-  static String convertToZHDateTimeString(String time, String timeSeparate) {
+  static String convertToZHDateTimeString(String time, String? timeSeparate) {
     time = time.replaceFirst("-", "年");
     time = time.replaceFirst("-", "月");
     time = time.replaceFirst(" ", "日 ");
@@ -209,7 +209,7 @@ class DateUtil {
   }
 
   static String dateTimeSeparate(
-      String time, String dateSeparate, String timeSeparate) {
+      String time, String? dateSeparate, String? timeSeparate) {
     if (dateSeparate != null) {
       time = time.replaceAll("-", dateSeparate);
     }

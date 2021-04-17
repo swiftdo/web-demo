@@ -9,10 +9,11 @@ class CategoryArticlesRoute extends AppRoute {
 
   String get queryString => Uri(queryParameters: data).query;
 
-  const CategoryArticlesRoute({this.categoryId, this.data = const {}});
+  const CategoryArticlesRoute({required this.categoryId, this.data = const {}});
 
   @override
-  Widget get child => CategoryArticlesPage(categoryId: categoryId, params: data);
+  Widget get child =>
+      CategoryArticlesPage(categoryId: categoryId, params: data);
 
   /// web 上显示的
   @override

@@ -9,7 +9,7 @@ import 'package:web_demo/style/style.dart';
 
 class NavContent extends StatelessWidget {
   const NavContent({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
