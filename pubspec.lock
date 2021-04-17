@@ -227,7 +227,7 @@ packages:
       path: "plugins/router_impl"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   scrollable_positioned_list:
     dependency: transitive
     description:

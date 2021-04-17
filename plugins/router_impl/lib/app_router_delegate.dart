@@ -6,8 +6,6 @@ import 'transitions.dart';
 import 'parser.dart';
 import 'package:provider/provider.dart';
 
-LocalKey _homeKey = UniqueKey();
-
 class AppRouter extends ChangeNotifier {
   final LocationParser parser;
 
@@ -16,15 +14,9 @@ class AppRouter extends ChangeNotifier {
   AppRouter({
     required this.parser,
     required this.homeRoute,
-    LocalKey? homeKey,
   }) {
-    print("AppRouter 初始化");
-    if (homeKey != null) {
-      _homeKey = homeKey;
-    }
-    _pages = [
-      homeRoute.createPage(key: _homeKey),
-    ];
+    _paths = [homeRoute];
+    _pages = [homeRoute.createPage()];
   }
 
   static AppRouter of(BuildContext context) =>
@@ -32,25 +24,28 @@ class AppRouter extends ChangeNotifier {
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+  List<AppRoute> get paths => List.unmodifiable(_paths);
   List<Page> get pages => List.unmodifiable(_pages);
 
+  List<AppRoute> _paths = [];
   List<Page> _pages = [];
 
-  AppRoute get currentRoute => _pages.last.arguments as AppRoute;
+  AppRoute get currentRoute => _paths.last;
 
-  void didPop(Page page) {
+  void didPop(AppRoute path) {
     print('🦌didPop');
-    _pages.remove(page);
+    _paths.remove(path);
+    _pages.removeWhere((element) => (element.arguments as AppRoute) == path);
     _notify();
   }
 
   Future<bool> pop() {
     print('🦌pop');
-    if (_pages.length > 1) {
-      didPop(_pages.last);
-      return Future.value(true);
+    if (_paths.length > 1) {
+      didPop(_paths.last);
+      return SynchronousFuture(true);
     }
-    return Future.value(false);
+    return SynchronousFuture(false);
   }
 
   void push(AppRoute route) {
@@ -59,6 +54,8 @@ class AppRouter extends ChangeNotifier {
   }
 
   Future<void> setNewRoutePath(AppRoute configuration) async {
+    print("😁：：setNewRoutePath");
+    _paths.add(configuration);
     _pages.add(configuration.createPage());
     _notify();
     return SynchronousFuture<void>(null);
@@ -67,13 +64,6 @@ class AppRouter extends ChangeNotifier {
   void _notify() {
     print('⏰通知更新');
     notifyListeners();
-  }
-
-  void replace(AppRoute route) {
-    if (_pages.isNotEmpty) {
-      _pages.removeLast();
-    }
-    push(route);
   }
 }
 
@@ -105,12 +95,14 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   }
 
   bool _handleOnPopPage(Route<dynamic> route, dynamic result) {
+    print('_handleOnPopPage');
     if (!route.didPop(result)) {
       return false;
     }
-    if (router.pages.isNotEmpty) {
-      // TODO: 有问题
-      // router.didPop(route);
+
+    if (router.paths.isNotEmpty) {
+      print('_handleOnPopPage a');
+      router.didPop(route.settings as AppRoute);
       return true;
     }
     return false;

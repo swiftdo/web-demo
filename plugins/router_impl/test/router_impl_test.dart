@@ -4,4 +4,8 @@ import 'package:router_impl/router_impl.dart';
 
 void main() {
   test('adds one to input values', () {});
+
+  String? a;
+
+  test(a == null, () {});
 }

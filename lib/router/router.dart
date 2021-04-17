@@ -8,9 +8,10 @@ import 'unknown_route.dart';
 /// 业务层
 class LocationParserImpl extends LocationParser {
   @override
-  AppRoute parse(String location) {
+  AppRoute parse(String? location) {
     print('$location');
-    Uri uri = Uri.parse(location);
+
+    Uri uri = Uri.parse(location ?? '');
 
     /// 首页
     if (uri.pathSegments.length == 0) {
@@ -34,7 +35,8 @@ class LocationParserImpl extends LocationParser {
         }
       } else if (path == 'categoryArticles') {
         if (id != null) {
-          return CategoryArticlesRoute(categoryId: id, data: uri.queryParameters);
+          return CategoryArticlesRoute(
+              categoryId: id, data: uri.queryParameters);
         }
       }
     }
