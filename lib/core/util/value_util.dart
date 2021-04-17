@@ -27,7 +27,7 @@ class ValueUtil {
     return !isEmpty(object);
   }
 
-  static Map toMap(Object value, {Map def = const {}}) {
+  static Map toMap(Object? value, {Map def = const {}}) {
     if (value is Map) {
       return value;
     } else {
@@ -35,7 +35,7 @@ class ValueUtil {
     }
   }
 
-  static List toList(Object value, {List def = const []}) {
+  static List toList(Object? value, {List def = const []}) {
     if (value is List) {
       return value;
     } else {
@@ -43,7 +43,7 @@ class ValueUtil {
     }
   }
 
-  static String toStr(Object value, {String def = ''}) {
+  static String toStr(Object? value, {String def = ''}) {
     if (value is String) {
       return value;
     } else if (value is num) {
@@ -53,7 +53,7 @@ class ValueUtil {
     }
   }
 
-  static int toInt(Object value, {int def = 0}) {
+  static int toInt(Object? value, {int def = 0}) {
     if (value is num) {
       return value.toInt();
     } else if (value is String) {
@@ -63,7 +63,7 @@ class ValueUtil {
     }
   }
 
-  static double toDouble(Object value, {double def = 0}) {
+  static double toDouble(Object? value, {double def = 0}) {
     if (value is num) {
       return value.toDouble();
     } else if (value is String) {
