@@ -46,7 +46,7 @@ Flutter 2.0 快速构建的一个站点样例
 
 ### 3.中文显示有问题
 
-webgl 不能渲染文本，需要先加载谷歌字体，然后中文才显示出来。
+flutter bug, 解决进度可关注：[Load fonts as soon as detecting browser locale](https://github.com/flutter/flutter/issues/77023)
 
 
 ### 4.页面刷新，或者指定url 无法打开页面
