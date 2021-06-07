@@ -85,4 +85,9 @@ OldBirds 是一个微信公众号。早期没怎么去管理，荒废了挺久�
 * 必须熟练掌握稳定的工具，尽早认知到这点，会节省你很多宝贵的时间
 
 最后记得关注微信公众号，每天打开 OldBirds 小程序，优质文章推荐给你。
+
+
+## Flutter 开源应用
+* [swiftdo/miniapp](https://github.com/swiftdo/miniapp) 一个小程序搜索应用
+
 ''';
