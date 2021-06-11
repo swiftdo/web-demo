@@ -38,7 +38,7 @@ class NavContent extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          GetX.router.push('/');
+                          GetX.router.push('/about');
                         },
                         child: Container(
                           margin: EdgeInsets.only(left: 30),
