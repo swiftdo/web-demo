@@ -1,45 +1,35 @@
-import 'package:router_impl/router_impl.dart';
-import 'about_route.dart';
-import 'home_route.dart';
-import 'category_articles_route.dart';
-import 'detail_route.dart';
-import 'unknown_route.dart';
+import 'package:flutter/material.dart';
+import 'package:routemaster/routemaster.dart';
+import 'package:web_demo/pages/about_page.dart';
+import 'package:web_demo/pages/article_detail_page.dart';
+import 'package:web_demo/pages/category_articles_page.dart';
+import 'package:web_demo/pages/home_page.dart';
 
-/// 业务层
-class LocationParserImpl extends LocationParser {
-  @override
-  AppRoute parse(String? location) {
-    print('$location');
+class Router {
+  final RoutemasterDelegate routemaster = RoutemasterDelegate(
+    routesBuilder: (context) => RouteMap(
+      routes: {
+        '/': (_) => MaterialPage(child: HomePage()),
+        '/about': (_) => MaterialPage(child: AboutPage()),
+        '/detail/:id': (info) => MaterialPage(
+              child: ArticleDetailPage(
+                articleId: info.pathParameters['id']!,
+              ),
+            ),
+        '/categoryArticles/:id': (info) => MaterialPage(
+              child: CategoryArticlesPage(
+                categoryId: info.pathParameters['id']!,
+                params: info.queryParameters,
+              ),
+            ),
+      },
+    ),
+  );
 
-    Uri uri = Uri.parse(location ?? '');
-
-    /// 首页
-    if (uri.pathSegments.length == 0) {
-      return HomeRoute();
-    }
-
-    ///
-    if (uri.pathSegments.length == 1) {
-      String path = uri.pathSegments[0];
-      if (path == 'about') {
-        return AboutRoute();
-      }
-    } else if (uri.pathSegments.length == 2) {
-      String path = uri.pathSegments[0];
-      String id = uri.pathSegments[1];
-
-      /// 详情页
-      if (path == 'detail') {
-        if (id != null) {
-          return DetailRoute(articleId: id);
-        }
-      } else if (path == 'categoryArticles') {
-        if (id != null) {
-          return CategoryArticlesRoute(
-              categoryId: id, data: uri.queryParameters);
-        }
-      }
-    }
-    return UnknownRoute();
+  NavigationResult<T> push<T extends Object?>(
+    String path, {
+    Map<String, String>? queryParameters,
+  }) {
+    return routemaster.push<T>(path, queryParameters: queryParameters);
   }
 }

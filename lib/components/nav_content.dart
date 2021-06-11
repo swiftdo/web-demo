@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:router_impl/app_route.dart';
-import 'package:router_impl/app_router_delegate.dart';
-import 'package:web_demo/pages/home_page.dart';
-import 'package:web_demo/router/about_route.dart';
-import 'package:web_demo/router/home_route.dart';
+import 'package:web_demo/locator.dart';
 import 'package:web_demo/style/style.dart';
 
 class NavContent extends StatelessWidget {
@@ -29,9 +25,7 @@ class NavContent extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          AppRouter.of(context).push(
-                            HomeRoute(),
-                          );
+                          GetX.router.push('/');
                         },
                         child: Text(
                           'OldBirds',
@@ -44,9 +38,7 @@ class NavContent extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          AppRouter.of(context).push(
-                            AboutRoute(),
-                          );
+                          GetX.router.push('/');
                         },
                         child: Container(
                           margin: EdgeInsets.only(left: 30),

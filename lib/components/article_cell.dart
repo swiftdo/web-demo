@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:router_impl/app_router_delegate.dart';
+
+import 'package:web_demo/locator.dart';
 import 'package:web_demo/models/models.dart';
-import 'package:web_demo/router/category_articles_route.dart';
-import 'package:web_demo/router/detail_route.dart';
 import 'package:web_demo/style/style.dart';
 
 class ArticleCell extends StatelessWidget {
@@ -14,7 +13,7 @@ class ArticleCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppRouter.of(context).push(DetailRoute(articleId: article.id));
+        GetX.router.push('/detail/${article.id}');
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
@@ -49,14 +48,11 @@ class ArticleCell extends StatelessWidget {
                           ),
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
-                            AppRouter.of(context).push(
-                              CategoryArticlesRoute(
-                                categoryId: article.category.id,
-                                data: {
+                            GetX.router.push(
+                                '/categoryArticles/${article.category.id}',
+                                queryParameters: {
                                   "title": article.category.name,
-                                },
-                              ),
-                            );
+                                });
                           },
                         ),
                         Text(
