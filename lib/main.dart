@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:routemaster/routemaster.dart';
 import 'package:web_demo/locator.dart';
+
 import 'configure_nonweb.dart' if (dart.library.html) 'configure_web.dart';
 
 void main() async {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerDelegate: GetX.router.routemaster,
-      routeInformationParser: RoutemasterParser(),
+      routeInformationParser: GetX.router.parser,
     );
   }
 }

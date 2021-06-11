@@ -6,6 +6,8 @@ import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 
 class Router {
+  final RoutemasterParser parser = RoutemasterParser();
+
   final RoutemasterDelegate routemaster = RoutemasterDelegate(
     routesBuilder: (context) => RouteMap(
       routes: {
