@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.bgColor,
       appBar: UIUtil.appBar(context),
       body: ChangeNotifierProvider(
         create: (_) => ArticleListViewModel(),

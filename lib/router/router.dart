@@ -4,6 +4,8 @@ import 'package:web_demo/pages/about_page.dart';
 import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
+import 'package:web_demo/pages/index_page.dart';
+import 'package:web_demo/pages/unknown_page.dart';
 
 class Router {
   final RoutemasterParser parser = RoutemasterParser();
@@ -11,30 +13,22 @@ class Router {
   final RoutemasterDelegate routemaster = RoutemasterDelegate(
     transitionDelegate: NoAnimationTransitionDelegate(),
     routesBuilder: (context) => RouteMap(
-        routes: {
-          '/': (_) => MaterialPage(child: HomePage()),
-          '/about': (_) => MaterialPage(child: AboutPage()),
-          '/detail/:id': (info) => MaterialPage(
-              child: ArticleDetailPage(articleId: info.pathParameters['id']!)),
-          '/categoryArticles/:id': (info) => MaterialPage(
-                child: CategoryArticlesPage(
-                  categoryId: info.pathParameters['id']!,
-                  params: info.queryParameters,
-                ),
-              ),
-        },
-        onUnknownRoute: (path) {
-          return MaterialPage(
-            child: Scaffold(
-              body: Center(
-                child: Text(
-                  "Couldn't find page '$path'",
-                  style: Theme.of(context).textTheme.headline3,
-                ),
+      routes: {
+        '/': (_) => MaterialPage(child: IndexPage()),
+        '/about': (_) => MaterialPage(child: AboutPage()),
+        '/detail/:id': (info) => MaterialPage(
+            child: ArticleDetailPage(articleId: info.pathParameters['id']!)),
+        '/categoryArticles/:id': (info) => MaterialPage(
+              child: CategoryArticlesPage(
+                categoryId: info.pathParameters['id']!,
+                params: info.queryParameters,
               ),
             ),
-          );
-        }),
+      },
+      onUnknownRoute: (path) {
+        return MaterialPage(child: UnknownPage(path));
+      },
+    ),
   );
 
   NavigationResult<T> push<T extends Object?>(
