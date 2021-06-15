@@ -2,7 +2,6 @@
 
 Flutter 2.0 快速构建的一个站点样例
 
-* 在线预览：[http://webdemo.loveli.site](http://webdemo.loveli.site)
 * github ci构建的版本(每次代码提交，自动构建)：[http://webdemo.oldbird.run](http://webdemo.oldbird.run), 采用 hash 路由策略
 
 更多精彩，请关注官方微信公众号: **Oldbirds**
