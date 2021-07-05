@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:web_demo/components/article_cell.dart';
-import 'package:web_demo/components/content_widget.dart';
+import 'package:web_demo/widgets/article_cell.dart';
+import 'package:web_demo/widgets/content_widget.dart';
 import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/models/models.dart';

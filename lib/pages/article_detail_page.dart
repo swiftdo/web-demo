@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web_demo/components/content_widget.dart';
+import 'package:web_demo/widgets/content_widget.dart';
 import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/pages/article_detail_viewmodel.dart';

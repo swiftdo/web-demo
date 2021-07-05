@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:web_demo/components/side_widget.dart';
+import 'package:web_demo/widgets/side_widget.dart';
 import 'package:web_demo/style/style.dart';
 
 class ContentWidget extends StatelessWidget {
