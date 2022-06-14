@@ -26,7 +26,7 @@ Flutter 2.0 快速构建的一个站点样例
 - 方案三：如果你不想自己写个类似中转请求来解决跨域问题，我在服务器那边配置了跨域域名：localhost:53794。
 
   ```sh
-  fvm flutter run -d Chorme --web-port=53794
+  fvm flutter run -d Chrome --web-port=53794
   ```
 
 ## 配套课程
