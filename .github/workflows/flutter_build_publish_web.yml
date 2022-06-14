@@ -10,10 +10,10 @@ jobs:
       my_secret: ${{secrets.commit_secret}}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: "stable"
       - run: flutter pub get
       - run: flutter build web --web-renderer canvaskit --release
       - run: |
