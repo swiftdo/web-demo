@@ -20,4 +20,7 @@ extension ContextStyle on BuildContext {
 
   ThemeData get currentTheme =>
       isDarkTheme ? ThemeData.dark() : ThemeData.light();
+
+  String get logoImg =>
+      isDarkTheme ? 'assets/images/dark_logo.png' : 'assets/images/logo.png';
 }

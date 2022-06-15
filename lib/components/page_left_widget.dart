@@ -40,7 +40,7 @@ class PageLeftWidget extends StatelessWidget {
                     child: Row(children: [
                       ClipOval(
                         child: Image.asset(
-                          "assets/images/logo.png",
+                          context.logoImg,
                           width: 40,
                           height: 40,
                         ),
