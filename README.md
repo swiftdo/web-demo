@@ -1,6 +1,6 @@
 # web_demo
 
-Flutter 2.0 快速构建的一个站点样例
+Flutter 3.0 快速构建的一个站点样例
 
 - github ci 构建的版本(每次代码提交，自动构建)：[http://webdemo.oldbird.run](http://webdemo.oldbird.run), 采用 hash 路由策略
 
@@ -17,6 +17,12 @@ Flutter 2.0 快速构建的一个站点样例
    $ fvm install
    $ fvm flutter run -d Chrome --web-port=53794
    ```
+
+## TODO
+
+* [ ] 分类
+* [ ] 主题切换
+* [ ] provider 替换为 riverpod
 
 ## 配套课程
 
