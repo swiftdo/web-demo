@@ -5,6 +5,24 @@ import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 
+class _WebPage extends CustomTransitionPage {
+  _WebPage({
+    LocalKey? key,
+    required Widget child,
+  }) : super(
+          child: child,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          key: key,
+        );
+}
+
 class Router {
   RouterDelegate<Object> get routerDelegate => router.routerDelegate;
 
@@ -15,23 +33,33 @@ class Router {
     routes: <GoRoute>[
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) => HomePage(),
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: HomePage(),
+        ),
       ),
       GoRoute(
         path: '/about',
-        builder: (BuildContext context, GoRouterState state) => AboutPage(),
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: AboutPage(),
+        ),
       ),
       GoRoute(
         path: '/detail/:id',
-        builder: (BuildContext context, GoRouterState state) =>
-            ArticleDetailPage(articleId: state.params['id']!),
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: ArticleDetailPage(articleId: state.params['id']!),
+        ),
       ),
       GoRoute(
         path: '/categoryArticles/:id',
-        builder: (BuildContext context, GoRouterState state) =>
-            CategoryArticlesPage(
-          categoryId: state.params['id']!,
-          params: state.queryParams,
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: CategoryArticlesPage(
+            categoryId: state.params['id']!,
+            params: state.queryParams,
+          ),
         ),
       )
     ],
