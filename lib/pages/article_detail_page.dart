@@ -8,6 +8,7 @@ import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/pages/article_detail_viewmodel.dart';
 import 'package:web_demo/pages/template_page.dart';
+import 'package:web_demo/style/context_style.dart';
 
 import '../components/page_header.dart';
 
@@ -43,16 +44,23 @@ class ArticleDetailPage extends StatelessWidget {
       return UIUtil.loading(context);
     }
     return Container(
-      color: Colors.white,
+      color: context.bgColor,
       child: MarkdownWidget(
         data: model.article!.showDetail,
         controller: tocController,
         padding: EdgeInsets.only(bottom: 50, left: 16, right: 16, top: 16),
-        styleConfig: StyleConfig(pConfig: PConfig(onLinkTap: (url) {
-          if (url != null) {
-            launch(url);
-          }
-        })),
+        styleConfig: StyleConfig(
+          markdownTheme: context.isDarkTheme
+              ? MarkdownTheme.darkTheme
+              : MarkdownTheme.lightTheme,
+          pConfig: PConfig(
+            onLinkTap: (url) {
+              if (url != null) {
+                launch(url);
+              }
+            },
+          ),
+        ),
       ),
     );
   }

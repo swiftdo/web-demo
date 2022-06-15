@@ -14,7 +14,7 @@ class ListLoadMore extends StatelessWidget {
         padding: EdgeInsets.only(top: 10, bottom: 30),
         margin: EdgeInsets.only(bottom: 30),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.bgColor,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

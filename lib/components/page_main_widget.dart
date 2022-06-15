@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_demo/style/context_style.dart';
 
 class PageMainWidget extends StatelessWidget {
   final bool showRightBorder;
@@ -12,9 +13,9 @@ class PageMainWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          left: BorderSide(color: Colors.black12, width: 1),
+          left: BorderSide(color: context.borderColor, width: 1),
           right: BorderSide(
-              color: showRightBorder ? Colors.black12 : Colors.transparent,
+              color: showRightBorder ? context.borderColor : Colors.transparent,
               width: 1),
         ),
       ),

@@ -17,7 +17,10 @@ class PageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: Colors.grey[100]!))),
+          border: Border(
+              bottom: BorderSide(
+        color: context.borderColor,
+      ))),
       padding: EdgeInsets.only(left: 20, right: 20),
       height: 60,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

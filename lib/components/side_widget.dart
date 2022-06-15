@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_demo/style/context_style.dart';
 
 class SideWidget extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class SideWidget extends StatelessWidget {
           Container(
             width: 200,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.bgColor,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Column(
@@ -26,9 +27,12 @@ class SideWidget extends StatelessWidget {
                     '扫码关注微信公众号OldBirds，入微信交流群！',
                   ),
                 ),
-                Image.asset(
-                  'assets/images/wechat_cobe.jpeg',
-                  fit: BoxFit.fitWidth,
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Image.asset(
+                    'assets/images/wechat_cobe.jpeg',
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ],
             ),

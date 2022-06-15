@@ -17,7 +17,7 @@ class ArticleCell extends StatelessWidget {
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
-        color: Colors.white,
+        color: context.bgColor,
         child: Column(
           children: [
             Container(
