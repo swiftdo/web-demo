@@ -28,12 +28,15 @@ class HomePage extends StatelessWidget {
                           Article article = model.list[index];
                           return ArticleCell(article: article);
                         } else {
-                          return ListLoadMore(onPressed: () {
-                            model.loadMore();
-                          });
+                          return ListLoadMore(
+                            onPressed: () {
+                              model.loadMore();
+                            },
+                            hasMore: model.hasMore,
+                          );
                         }
                       },
-                      itemCount: model.list.length + (model.hasMore ? 1 : 0),
+                      itemCount: model.list.length + 1,
                     ),
               sideChild: model.viewState == ViewState.busy ? Container() : null,
             );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:web_demo/locator.dart';
 import 'package:web_demo/models/models.dart';
@@ -13,7 +14,7 @@ class ArticleCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GetX.router.push('/detail/${article.id}');
+        context.push('/detail/${article.id}');
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
@@ -48,11 +49,9 @@ class ArticleCell extends StatelessWidget {
                           ),
                           behavior: HitTestBehavior.opaque,
                           onTap: () {
-                            GetX.router.push(
-                                '/categoryArticles/${article.category.id}',
-                                queryParameters: {
-                                  "title": article.category.name,
-                                });
+                            context.push(
+                              '/categoryArticles/${article.category.id}?title=${article.category.name}',
+                            );
                           },
                         ),
                         Text(

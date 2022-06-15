@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:web_demo/locator.dart';
 import 'package:web_demo/style/style.dart';
 
 class NavContent extends StatelessWidget {
@@ -21,11 +21,12 @@ class NavContent extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  Wrap(
+                    spacing: 20,
                     children: [
                       GestureDetector(
                         onTap: () {
-                          GetX.router.push('/');
+                          context.push('/');
                         },
                         child: Text(
                           'OldBirds',
@@ -38,7 +39,24 @@ class NavContent extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          GetX.router.push('/about');
+                          context.push(
+                              '/categoryArticles/62a9749d6927690001ca3a9f?title=面试题');
+                        },
+                        child: Text(
+                          'Flutter面试题',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Style.mainTextColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.push('/about');
                         },
                         child: Container(
                           margin: EdgeInsets.only(left: 30),
@@ -52,7 +70,7 @@ class NavContent extends StatelessWidget {
                         ),
                       )
                     ],
-                  ),
+                  )
                 ],
               ),
             )

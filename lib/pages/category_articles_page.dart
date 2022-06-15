@@ -44,11 +44,10 @@ class CategoryArticlesPage extends StatelessWidget {
                               } else {
                                 return ListLoadMore(onPressed: () {
                                   model.loadMore();
-                                });
+                                }, hasMore: model.hasMore,);
                               }
                             },
-                            itemCount:
-                                model.list.length + (model.hasMore ? 1 : 0),
+                            itemCount: model.list.length + 1,
                           ),
                         )
                       ],
