@@ -9,6 +9,7 @@ import 'package:web_demo/core/util/value_util.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/style/style.dart';
 
+import '../components/list_load_more.dart';
 import 'article_list_viewmodel.dart';
 
 ///
@@ -41,14 +42,9 @@ class CategoryArticlesPage extends StatelessWidget {
                                 Article article = model.list[index];
                                 return ArticleCell(article: article);
                               } else {
-                                return Container(
-                                  child: ElevatedButton(
-                                    child: Text('加载下一页'),
-                                    onPressed: () {
-                                      model.loadMore();
-                                    },
-                                  ),
-                                );
+                                return ListLoadMore(onPressed: () {
+                                  model.loadMore();
+                                });
                               }
                             },
                             itemCount:

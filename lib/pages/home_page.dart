@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/components/article_cell.dart';
 import 'package:web_demo/components/content_widget.dart';
+import 'package:web_demo/components/list_load_more.dart';
 import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/models/models.dart';
@@ -27,14 +28,9 @@ class HomePage extends StatelessWidget {
                           Article article = model.list[index];
                           return ArticleCell(article: article);
                         } else {
-                          return Container(
-                            child: ElevatedButton(
-                              child: Text('加载下一页'),
-                              onPressed: () {
-                                model.loadMore();
-                              },
-                            ),
-                          );
+                          return ListLoadMore(onPressed: () {
+                            model.loadMore();
+                          });
                         }
                       },
                       itemCount: model.list.length + (model.hasMore ? 1 : 0),
