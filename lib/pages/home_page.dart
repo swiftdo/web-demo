@@ -1,48 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:web_demo/components/article_cell.dart';
-import 'package:web_demo/components/content_widget.dart';
-import 'package:web_demo/components/list_load_more.dart';
-import 'package:web_demo/core/provider/provider.dart';
-import 'package:web_demo/core/util/ui_util.dart';
-import 'package:web_demo/models/models.dart';
-import 'package:web_demo/pages/article_list_viewmodel.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:web_demo/components/page_left_widget.dart';
+import 'package:web_demo/components/page_main_widget.dart';
+import 'package:web_demo/components/page_right_widget.dart';
+import 'package:web_demo/pages/home_desktop_page.dart';
+import 'package:web_demo/pages/home_tablet_page.dart';
+
 import 'package:web_demo/style/style.dart';
+
+import 'home_mobile_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Style.bgColor,
-      appBar: UIUtil.appBar(context),
-      body: ChangeNotifierProvider(
-        create: (_) => ArticleListViewModel(),
-        builder: (context, child) => Consumer<ArticleListViewModel>(
-          builder: (context, model, child) {
-            return ContentWidget(
-              child: model.viewState == ViewState.busy
-                  ? UIUtil.loading()
-                  : ListView.builder(
-                      itemBuilder: (context, index) {
-                        if (index < model.list.length) {
-                          Article article = model.list[index];
-                          return ArticleCell(article: article);
-                        } else {
-                          return ListLoadMore(
-                            onPressed: () {
-                              model.loadMore();
-                            },
-                            hasMore: model.hasMore,
-                          );
-                        }
-                      },
-                      itemCount: model.list.length + 1,
-                    ),
-              sideChild: model.viewState == ViewState.busy ? Container() : null,
-            );
-          },
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    return ScreenTypeLayout.builder(
+      mobile: (BuildContext context) => HomeMobilePage(),
+      tablet: (BuildContext context) => HomeTabletPage(),
+      desktop: (BuildContext context) => HomeDesktopPage(),
+      watch: (BuildContext context) => Container(color: Colors.purple),
     );
   }
 }
