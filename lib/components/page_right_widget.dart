@@ -8,7 +8,16 @@ class PageRightWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [SideWidget()]),
+      margin: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(left: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [SideWidget()],
+          )
+        ],
+      ),
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 
+import '../pages/error_page.dart';
+
 class _WebPage extends CustomTransitionPage {
   _WebPage({
     LocalKey? key,
@@ -63,5 +65,9 @@ class Router {
         ),
       )
     ],
+    errorPageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+      key: state.pageKey,
+      child: ErrorPage(error: state.error.toString()),
+    ),
   );
 }

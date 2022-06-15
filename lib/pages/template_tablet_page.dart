@@ -4,8 +4,9 @@ import '../components/page_main_widget.dart';
 import '../components/page_right_widget.dart';
 import '../style/style.dart';
 
-class HomeTabletPage extends StatelessWidget {
-  const HomeTabletPage({Key? key}) : super(key: key);
+class TemplateTabletPage extends StatelessWidget {
+  final Widget child;
+  const TemplateTabletPage({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,9 @@ class HomeTabletPage extends StatelessWidget {
         ),
         Expanded(
           flex: 5,
-          child: PageMainWidget(),
+          child: PageMainWidget(
+            child: child,
+          ),
         ),
         Expanded(
           flex: 3,

@@ -6,7 +6,10 @@ import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/pages/article_detail_viewmodel.dart';
+import 'package:web_demo/pages/template_page.dart';
 import 'package:web_demo/style/style.dart';
+
+import '../components/page_header.dart';
 
 /// 文章详情页
 class ArticleDetailPage extends StatelessWidget {
@@ -18,20 +21,20 @@ class ArticleDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Style.bgColor,
-      appBar: UIUtil.appBar(context),
-      body: ChangeNotifierProvider(
-        create: (_) => ArticleDetailViewModel(articleId: articleId),
-        builder: (context, child) => Consumer<ArticleDetailViewModel>(
-          builder: (context, model, child) {
-            return ContentWidget(
-              child: _buildDetail(model),
-              sideChild: _buildToc(model),
-            );
-          },
+    return TemplatePage(
+      child: Column(children: [
+        PageHeader(title: "文章详情"),
+        Expanded(
+          child: ChangeNotifierProvider(
+            create: (_) => ArticleDetailViewModel(articleId: articleId),
+            builder: (context, child) => Consumer<ArticleDetailViewModel>(
+              builder: (context, model, child) {
+                return _buildDetail(model);
+              },
+            ),
+          ),
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ]),
     );
   }
 

@@ -11,43 +11,24 @@ import 'content_widget.dart';
 import 'list_load_more.dart';
 
 class PageMainWidget extends StatelessWidget {
-  const PageMainWidget({Key? key}) : super(key: key);
+  final bool showRightBorder;
+  final Widget child;
+  const PageMainWidget(
+      {Key? key, this.showRightBorder = true, required this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          left: BorderSide(color: Colors.grey, width: 1),
-          right: BorderSide(color: Colors.grey, width: 1),
+          left: BorderSide(color: Colors.black12, width: 1),
+          right: BorderSide(
+              color: showRightBorder ? Colors.black12 : Colors.transparent,
+              width: 1),
         ),
       ),
-      child: ChangeNotifierProvider(
-        create: (_) => ArticleListViewModel(),
-        builder: (context, child) => Consumer<ArticleListViewModel>(
-          builder: (context, model, child) {
-            if (model.viewState == ViewState.busy) {
-              return UIUtil.loading();
-            }
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                if (index < model.list.length) {
-                  Article article = model.list[index];
-                  return ArticleCell(article: article);
-                } else {
-                  return ListLoadMore(
-                    onPressed: () {
-                      model.loadMore();
-                    },
-                    hasMore: model.hasMore,
-                  );
-                }
-              },
-              itemCount: model.list.length + 1,
-            );
-          },
-        ),
-      ),
+      child: child,
     );
   }
 }
