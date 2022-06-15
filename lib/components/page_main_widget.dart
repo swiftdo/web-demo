@@ -15,30 +15,38 @@ class PageMainWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ArticleListViewModel(),
-      builder: (context, child) => Consumer<ArticleListViewModel>(
-        builder: (context, model, child) {
-          if (model.viewState == ViewState.busy) {
-            return UIUtil.loading();
-          }
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              if (index < model.list.length) {
-                Article article = model.list[index];
-                return ArticleCell(article: article);
-              } else {
-                return ListLoadMore(
-                  onPressed: () {
-                    model.loadMore();
-                  },
-                  hasMore: model.hasMore,
-                );
-              }
-            },
-            itemCount: model.list.length + 1,
-          );
-        },
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          left: BorderSide(color: Colors.grey, width: 1),
+          right: BorderSide(color: Colors.grey, width: 1),
+        ),
+      ),
+      child: ChangeNotifierProvider(
+        create: (_) => ArticleListViewModel(),
+        builder: (context, child) => Consumer<ArticleListViewModel>(
+          builder: (context, model, child) {
+            if (model.viewState == ViewState.busy) {
+              return UIUtil.loading();
+            }
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                if (index < model.list.length) {
+                  Article article = model.list[index];
+                  return ArticleCell(article: article);
+                } else {
+                  return ListLoadMore(
+                    onPressed: () {
+                      model.loadMore();
+                    },
+                    hasMore: model.hasMore,
+                  );
+                }
+              },
+              itemCount: model.list.length + 1,
+            );
+          },
+        ),
       ),
     );
   }

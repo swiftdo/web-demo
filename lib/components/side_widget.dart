@@ -5,7 +5,6 @@ class SideWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Style.sideWidth,
       margin: EdgeInsets.only(left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -13,7 +12,8 @@ class SideWidget extends StatelessWidget {
         children: [
           Container(
             width: Style.sideWidth,
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(4)),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(4)),
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
