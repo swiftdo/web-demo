@@ -32,6 +32,7 @@ class Router {
       router.routeInformationParser;
 
   final GoRouter router = GoRouter(
+    observers: [MyNavObserver()],
     routes: <GoRoute>[
       GoRoute(
         path: '/',
@@ -70,4 +71,29 @@ class Router {
       child: ErrorPage(error: state.error.toString()),
     ),
   );
+}
+
+class MyNavObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    //TODO: 如何告知左侧侧边栏？riverpod ?
+  }
+
+  @override
+  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {}
+
+  @override
+  void didStartUserGesture(
+    Route<dynamic> route,
+    Route<dynamic>? previousRoute,
+  ) {}
+
+  @override
+  void didStopUserGesture() {}
 }

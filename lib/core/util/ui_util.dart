@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:web_demo/components/nav_content.dart';
-import 'package:web_demo/style/style.dart';
+import 'package:web_demo/style/context_style.dart';
 
 class UIUtil {
   static AppBar appBar(BuildContext context) {
@@ -20,9 +20,9 @@ class UIUtil {
     );
   }
 
-  static Widget loading() {
-    return const SpinKitWave(
-      color: Style.primaryColor,
+  static Widget loading(BuildContext context) {
+    return SpinKitWave(
+      color: context.primaryColor,
       type: SpinKitWaveType.start,
     );
   }

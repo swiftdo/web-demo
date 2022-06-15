@@ -14,10 +14,10 @@ class LeftSidebarProvider extends ChangeNotifier {
   int get selectIndex => _selectIndex;
 
   final List<LeftSideItem> items = [
-    LeftSideItem(icon: Icons.home, title: "文章", path: "/"),
+    LeftSideItem(icon: Icons.article, title: "文章", path: "/"),
     LeftSideItem(icon: Icons.tag, title: "分类", path: "/"),
     LeftSideItem(
-      icon: Icons.hot_tub,
+      icon: Icons.question_mark,
       title: "面试题",
       path: "/categoryArticles/62a9749d6927690001ca3a9f?title=面试题",
     )

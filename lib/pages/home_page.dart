@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
 
   _buildContent(BuildContext context, ArticleListViewModel model) {
     if (model.viewState == ViewState.busy) {
-      return UIUtil.loading();
+      return UIUtil.loading(context);
     }
     return ListView.builder(
       itemBuilder: (context, index) {

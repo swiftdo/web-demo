@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/components/article_cell.dart';
-import 'package:web_demo/components/cate_list_header.dart';
-import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/components/page_header.dart';
-import 'package:web_demo/core/provider/view_state.dart';
-import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/core/util/value_util.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/pages/template_page.dart';

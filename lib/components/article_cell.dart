@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:web_demo/locator.dart';
 import 'package:web_demo/models/models.dart';
-import 'package:web_demo/style/style.dart';
+import 'package:web_demo/style/context_style.dart';
 
 class ArticleCell extends StatelessWidget {
   final Article article;
@@ -31,7 +30,7 @@ class ArticleCell extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Style.mainTextColor,
+                      color: context.mainTextColor,
                     ),
                   ),
                   Container(
@@ -43,7 +42,7 @@ class ArticleCell extends StatelessWidget {
                           child: Text(
                             '#' + article.category.name,
                             style: TextStyle(
-                              color: Style.primaryColor,
+                              color: context.primaryColor,
                               fontSize: 12,
                             ),
                           ),
@@ -58,7 +57,7 @@ class ArticleCell extends StatelessWidget {
                           article.showDate,
                           style: TextStyle(
                             fontSize: 12,
-                            color: Style.subTextColor,
+                            color: context.subTextColor,
                           ),
                         ),
                       ],
@@ -69,7 +68,7 @@ class ArticleCell extends StatelessWidget {
             ),
             Divider(
               height: 0.5,
-              color: Style.bgColor,
+              color: context.bgColor,
             )
           ],
         ),

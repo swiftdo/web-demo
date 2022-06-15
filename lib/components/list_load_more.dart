@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_demo/style/style.dart';
+import 'package:web_demo/style/context_style.dart';
 
 /// 加载更多
 class ListLoadMore extends StatelessWidget {
@@ -26,7 +26,7 @@ class ListLoadMore extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Style.primaryColor,
+                        color: context.primaryColor,
                       ),
                       padding:
                           EdgeInsets.symmetric(horizontal: 50, vertical: 10),

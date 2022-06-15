@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:web_demo/style/context_style.dart';
 
 import '../providers/left_sidebar_provider.dart';
-import '../style/style.dart';
 
 class PageLeftWidget extends StatelessWidget {
   const PageLeftWidget({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class PageLeftWidget extends StatelessWidget {
                         'OldBirds',
                         style: TextStyle(
                           fontSize: 28,
-                          color: Style.primaryColor,
+                          color: context.primaryColor,
                         ),
                       ),
                     ]),
@@ -70,7 +70,7 @@ class PageLeftWidget extends StatelessWidget {
                     isSelect: index == model.selectIndex,
                     onTap: () {
                       model.selectIndex = index;
-                      context.go(e.path);
+                      context.push(e.path);
                     },
                   );
                 }).toList(),
@@ -112,14 +112,14 @@ class PageLeftItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: isSelect
-                  ? Style.primaryColor.withOpacity(0.1)
+                  ? context.primaryColor.withOpacity(0.1)
                   : Colors.transparent,
             ),
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.only(bottom: 10),
             child: Icon(
               icon,
-              color: isSelect ? Style.primaryColor : Style.mainTextColor,
+              color: isSelect ? context.primaryColor : context.mainTextColor,
             ),
           ),
         );
@@ -135,18 +135,20 @@ class PageLeftItem extends StatelessWidget {
             child: Row(children: [
               Icon(
                 icon,
-                color: isSelect ? Style.primaryColor : Style.mainTextColor,
+                color: isSelect ? context.primaryColor : context.mainTextColor,
               ),
               SizedBox(width: 5),
               Text(
                 title,
                 style: TextStyle(
-                    color: isSelect ? Style.primaryColor : Style.mainTextColor),
+                    color: isSelect
+                        ? context.primaryColor
+                        : context.mainTextColor),
               )
             ]),
             decoration: BoxDecoration(
               color: isSelect
-                  ? Style.primaryColor.withOpacity(0.1)
+                  ? context.primaryColor.withOpacity(0.1)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(30),
             ),

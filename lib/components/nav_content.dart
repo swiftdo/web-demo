@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:web_demo/style/style.dart';
+import 'package:web_demo/style/context_style.dart';
 
 class NavContent extends StatelessWidget {
   const NavContent({
@@ -17,7 +17,7 @@ class NavContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: Style.bodyWidth,
+              width: 150,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -33,7 +33,7 @@ class NavContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Style.primaryColor,
+                            color: context.primaryColor,
                           ),
                         ),
                       ),
@@ -46,7 +46,7 @@ class NavContent extends StatelessWidget {
                           'Flutter面试题',
                           style: TextStyle(
                             fontSize: 16,
-                            color: Style.mainTextColor,
+                            color: context.mainTextColor,
                           ),
                         ),
                       ),
@@ -64,7 +64,7 @@ class NavContent extends StatelessWidget {
                             '关于',
                             style: TextStyle(
                               fontSize: 16,
-                              color: Style.mainTextColor,
+                              color: context.mainTextColor,
                             ),
                           ),
                         ),
@@ -88,7 +88,7 @@ class NavContent extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Style.primaryColor,
+                    color: context.primaryColor,
                   ),
                 ),
               ],

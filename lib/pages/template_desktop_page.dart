@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:web_demo/style/context_style.dart';
+import 'package:web_demo/style/theme_provider.dart';
 
 import '../components/page_left_widget.dart';
 import '../components/page_main_widget.dart';
 import '../components/page_right_widget.dart';
-import '../style/style.dart';
 
 class TemplateDesktopPage extends StatelessWidget {
   final Widget child;
@@ -12,7 +14,7 @@ class TemplateDesktopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.bgColor,
+      backgroundColor: context.bgColor,
       body: Row(children: [
         Spacer(
           flex: 1,

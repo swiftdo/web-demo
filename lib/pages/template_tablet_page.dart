@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:web_demo/style/context_style.dart';
 import '../components/page_left_widget.dart';
 import '../components/page_main_widget.dart';
 import '../components/page_right_widget.dart';
-import '../style/style.dart';
 
 class TemplateTabletPage extends StatelessWidget {
   final Widget child;
@@ -11,7 +11,7 @@ class TemplateTabletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.bgColor,
+      backgroundColor: context.bgColor,
       body: Row(children: [
         Expanded(
           child: PageLeftWidget(),

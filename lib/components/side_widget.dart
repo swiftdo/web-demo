@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_demo/style/style.dart';
 
 class SideWidget extends StatelessWidget {
   @override
@@ -13,7 +12,7 @@ class SideWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            width: Style.sideWidth,
+            width: 200,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(4),

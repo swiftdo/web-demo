@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../core/provider/view_state.dart';
-import '../core/util/ui_util.dart';
-import '../models/models.dart';
-import '../pages/article_list_viewmodel.dart';
-import '../style/style.dart';
-import 'article_cell.dart';
-import 'content_widget.dart';
-import 'list_load_more.dart';
 
 class PageMainWidget extends StatelessWidget {
   final bool showRightBorder;

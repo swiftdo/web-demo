@@ -1,13 +1,13 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/core/provider/provider.dart';
 import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/pages/article_detail_viewmodel.dart';
 import 'package:web_demo/pages/template_page.dart';
-import 'package:web_demo/style/style.dart';
 
 import '../components/page_header.dart';
 
@@ -29,7 +29,7 @@ class ArticleDetailPage extends StatelessWidget {
             create: (_) => ArticleDetailViewModel(articleId: articleId),
             builder: (context, child) => Consumer<ArticleDetailViewModel>(
               builder: (context, model, child) {
-                return _buildDetail(model);
+                return _buildDetail(model, context);
               },
             ),
           ),
@@ -38,9 +38,9 @@ class ArticleDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDetail(ArticleDetailViewModel model) {
+  Widget _buildDetail(ArticleDetailViewModel model, BuildContext context) {
     if (model.viewState == ViewState.busy) {
-      return UIUtil.loading();
+      return UIUtil.loading(context);
     }
     return Container(
       color: Colors.white,
@@ -54,40 +54,6 @@ class ArticleDetailPage extends StatelessWidget {
           }
         })),
       ),
-    );
-  }
-
-  Widget _buildToc(ArticleDetailViewModel model) {
-    if (model.viewState == ViewState.busy) {
-      return Container();
-    }
-    return Container(
-      margin: EdgeInsets.only(left: 16),
-      padding: EdgeInsets.all(16),
-      color: Colors.white,
-      child: TocListWidget(
-        controller: tocController,
-        tocItem: (toc, isCurrent) {
-          return GestureDetector(
-            onTap: () {
-              tocController.scrollController.jumpTo(index: toc.index);
-            },
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              margin: EdgeInsets.only(left: 10.0 * toc.tagLevel, top: 10),
-              child: Text(
-                toc.name,
-                style: TextStyle(
-                  fontSize: isCurrent ? 16 : 14,
-                  color: isCurrent ? Colors.blue : null,
-                  fontWeight: isCurrent ? FontWeight.bold : null,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      width: Style.sideWidth,
     );
   }
 }
