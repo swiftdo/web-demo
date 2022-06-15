@@ -15,19 +15,8 @@ Flutter 2.0 快速构建的一个站点样例
    ```sh
    $ cd web-demo
    $ fvm install
-   $ fvm flutter run -d Chrome
+   $ fvm flutter run -d Chrome --web-port=53794
    ```
-
-## 跨域问题
-
-- 方案一：可关注配套课程解决
-- 方案二：安装 Chrome 跨域插件:[Allow CORS](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf/related?hl=zh)
-
-- 方案三：如果你不想自己写个类似中转请求来解决跨域问题，我在服务器那边配置了跨域域名：localhost:53794。
-
-  ```sh
-  fvm flutter run -d Chrome --web-port=53794
-  ```
 
 ## 配套课程
 
