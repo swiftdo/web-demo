@@ -70,7 +70,7 @@ class PageLeftWidget extends StatelessWidget {
                     isSelect: index == model.selectIndex,
                     onTap: () {
                       model.selectIndex = index;
-                      context.go("/");
+                      context.go(e.path);
                     },
                   );
                 }).toList(),
