@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:web_demo/components/article_cell.dart';
 import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/core/provider/provider.dart';
@@ -22,20 +21,23 @@ class HomePage extends StatelessWidget {
             return ContentWidget(
               child: model.viewState == ViewState.busy
                   ? UIUtil.loading()
-                  : SmartRefresher(
-                      controller: model.refreshController,
-                      enablePullDown: true,
-                      enablePullUp: true,
-                      header: WaterDropHeader(),
-                      onRefresh: () => model.refresh(),
-                      onLoading: () => model.loadMore(),
-                      child: ListView.builder(
-                        itemBuilder: (context, index) {
+                  : ListView.builder(
+                      itemBuilder: (context, index) {
+                        if (index < model.list.length) {
                           Article article = model.list[index];
                           return ArticleCell(article: article);
-                        },
-                        itemCount: model.list.length,
-                      ),
+                        } else {
+                          return Container(
+                            child: ElevatedButton(
+                              child: Text('加载下一页'),
+                              onPressed: () {
+                                model.loadMore();
+                              },
+                            ),
+                          );
+                        }
+                      },
+                      itemCount: model.list.length + (model.hasMore ? 1 : 0),
                     ),
               sideChild: model.viewState == ViewState.busy ? Container() : null,
             );

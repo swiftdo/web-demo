@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:web_demo/components/article_cell.dart';
+import 'package:web_demo/components/cate_list_header.dart';
 import 'package:web_demo/components/content_widget.dart';
 import 'package:web_demo/core/provider/view_state.dart';
 import 'package:web_demo/core/util/ui_util.dart';
@@ -31,47 +31,30 @@ class CategoryArticlesPage extends StatelessWidget {
                   ? UIUtil.loading()
                   : Column(
                       children: [
-                        Column(
-                          children: [
-                            Container(
-                              color: Colors.white,
-                              padding: EdgeInsets.all(16),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '#${ValueUtil.toStr(params['title'])}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24,
-                                      color: Style.primaryColor,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              color: Style.bgColor,
-                              height: 0.5,
-                            ),
-                          ],
+                        CateListHeader(
+                          title: ValueUtil.toStr(params['title']),
                         ),
                         Expanded(
-                            child: SmartRefresher(
-                          controller: model.refreshController,
-                          enablePullDown: true,
-                          enablePullUp: true,
-                          header: WaterDropHeader(),
-                          onRefresh: () => model.refresh(),
-                          onLoading: () => model.loadMore(),
                           child: ListView.builder(
                             itemBuilder: (context, index) {
-                              Article article = model.list[index];
-                              return ArticleCell(article: article);
+                              if (index < model.list.length) {
+                                Article article = model.list[index];
+                                return ArticleCell(article: article);
+                              } else {
+                                return Container(
+                                  child: ElevatedButton(
+                                    child: Text('加载下一页'),
+                                    onPressed: () {
+                                      model.loadMore();
+                                    },
+                                  ),
+                                );
+                              }
                             },
-                            itemCount: model.list.length,
+                            itemCount:
+                                model.list.length + (model.hasMore ? 1 : 0),
                           ),
-                        ))
+                        )
                       ],
                     ),
               sideChild: model.viewState == ViewState.busy ? Container() : null,
