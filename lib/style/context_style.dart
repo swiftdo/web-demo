@@ -12,7 +12,7 @@ extension ContextStyle on BuildContext {
   Color get subTextColor =>
       isDarkTheme ? Colors.white : const Color(0xffa8a8a8);
 
-  Color get bgColor => isDarkTheme ? Colors.black : Colors.white;
+  Color get bgColor => isDarkTheme ? const Color(0xff0d1117) : Colors.white;
 
   Color get borderColor => isDarkTheme ? Colors.white12 : Colors.black12;
 
