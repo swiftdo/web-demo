@@ -62,3 +62,11 @@ location @router {
     rewrite ^.*$ /index.html break;
 }
 ```
+
+### 5. SEO 问题
+
+建立一个 seo 友好的网站意味着谷歌和其他搜索引擎可以高效地抓取网站上的每个页面，有效地解释内容，并将其索引到数据库中。一旦编入索引，他们就可以根据用户搜索的主题向用户提供最相关、最有价值的网页。
+
+Flutter Web 的 SEO 能力支持不友好。
+
+可关注该问题 [How Manage SEO In flutter web?](https://stackoverflow.com/questions/71634738/how-manage-seo-in-flutter-web)
