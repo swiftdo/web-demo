@@ -11,42 +11,42 @@ class ListLoadMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(top: 10, bottom: 30),
-        margin: EdgeInsets.only(bottom: 30),
-        decoration: BoxDecoration(
-          color: context.bgColor,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            hasMore
-                ? GestureDetector(
-                    onTap: onPressed,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+      padding: EdgeInsets.only(top: 10, bottom: 30),
+      margin: EdgeInsets.only(bottom: 30),
+      decoration: BoxDecoration(
+        color: context.bgColor,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          hasMore
+              ? GestureDetector(
+                  onTap: onPressed,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: context.primaryColor),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 8),
+                    child: Text(
+                      '点击加载下一页',
+                      style: TextStyle(
+                        fontSize: 14,
                         color: context.primaryColor,
                       ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                      child: Text(
-                        '点击加载下一页',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
-                  )
-                : Text(
-                    "到底了~",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                    ),
-                  )
-          ],
-        ));
+                  ),
+                )
+              : Text(
+                  "到底了~",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                  ),
+                )
+        ],
+      ),
+    );
   }
 }

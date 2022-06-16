@@ -66,9 +66,10 @@ class ApiImpl implements Api {
 
   /// 获取全部文章分类
   Future<Map> fetchArticleCates() async {
+    // https://d6579fc5-c18b-443b-a2ef-01c2b6be51d5.bspapp.com/http/get_news_categories
     final response = await _dio.get('get_news_categories');
     Map data = response.data;
-    return ValueUtil.toMap(data['data']);
+    return ValueUtil.toMap(data);
   }
 
   /// 搜索文章

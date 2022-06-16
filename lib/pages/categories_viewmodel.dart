@@ -7,7 +7,7 @@ import '../models/models.dart';
 class CategoriesViewModel extends ViewStateRefreshListModel {
   final Api api = locator<Api>();
 
-  ArticleListViewModel() {
+  CategoriesViewModel() {
     initData();
   }
 

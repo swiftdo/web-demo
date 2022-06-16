@@ -14,7 +14,7 @@ extension ContextStyle on BuildContext {
 
   Color get bgColor => isDarkTheme ? Colors.black : Colors.white;
 
-  Color get borderColor => isDarkTheme ? Colors.black : Colors.black12;
+  Color get borderColor => isDarkTheme ? Colors.white12 : Colors.black12;
 
   ThemeData get currentTheme =>
       isDarkTheme ? ThemeData.dark() : ThemeData.light();

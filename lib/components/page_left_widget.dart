@@ -41,15 +41,8 @@ class PageLeftWidget extends StatelessWidget {
                       ClipOval(
                         child: Image.asset(
                           context.logoImg,
-                          width: 40,
-                          height: 40,
-                        ),
-                      ),
-                      Text(
-                        'OldBirds',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: context.primaryColor,
+                          width: 50,
+                          height: 50,
                         ),
                       ),
                     ]),

@@ -6,7 +6,10 @@ import 'package:web_demo/core/util/value_util.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/pages/template_page.dart';
 
+import '../components/list_empty_view.dart';
 import '../components/list_load_more.dart';
+import '../core/provider/view_state.dart';
+import '../core/util/ui_util.dart';
 import 'article_list_viewmodel.dart';
 
 ///
@@ -26,28 +29,40 @@ class CategoryArticlesPage extends StatelessWidget {
               children: [
                 PageHeader(title: ValueUtil.toStr(params['title'])),
                 Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      if (index < model.list.length) {
-                        Article article = model.list[index];
-                        return ArticleCell(article: article);
-                      } else {
-                        return ListLoadMore(
-                          onPressed: () {
-                            model.loadMore();
-                          },
-                          hasMore: model.hasMore,
-                        );
-                      }
-                    },
-                    itemCount: model.list.length + 1,
-                  ),
+                  child: _buildContent(context, model),
                 )
               ],
             );
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, ArticleListViewModel model) {
+    if (model.viewState == ViewState.busy) {
+      return UIUtil.loading(context);
+    }
+
+    if (model.list.isEmpty) {
+      return ListEmptyView();
+    }
+
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        if (index < model.list.length) {
+          Article article = model.list[index];
+          return ArticleCell(article: article);
+        } else {
+          return ListLoadMore(
+            onPressed: () {
+              model.loadMore();
+            },
+            hasMore: model.hasMore,
+          );
+        }
+      },
+      itemCount: model.list.length + 1,
     );
   }
 }

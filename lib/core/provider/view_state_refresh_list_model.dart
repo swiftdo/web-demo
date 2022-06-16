@@ -24,8 +24,8 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
         onCompleted(data);
         list.clear();
         list.addAll(data);
-        setIdle();
       }
+      setIdle();
       return data;
     } catch (e, s) {
       /// 页面已经加载了数据,如果刷新报错,不应该直接跳转错误页面
