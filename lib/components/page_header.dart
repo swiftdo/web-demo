@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:line_icons/line_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/components/custom_switch.dart';
 import 'package:web_demo/style/context_style.dart';
@@ -17,14 +18,17 @@ class PageHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(
-        color: context.borderColor,
-      ))),
+        border: Border(
+          bottom: BorderSide(
+            color: context.borderColor,
+          ),
+        ),
+      ),
       padding: EdgeInsets.only(left: 20, right: 20),
       height: 60,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Wrap(
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (canBack)
               GestureDetector(
@@ -33,7 +37,7 @@ class PageHeader extends StatelessWidget {
                   context.pop();
                 },
                 child: Container(
-                  child: Icon(Icons.arrow_back),
+                  child: LineIcon.angleLeft(),
                   padding: EdgeInsets.only(right: 10),
                 ),
               ),
@@ -63,7 +67,7 @@ class PageHeader extends StatelessWidget {
               color: context.primaryColor.withOpacity(0.2),
               width: 1.0,
             ),
-            activeColor: context.primaryColor,
+            activeColor: Colors.white,
             inactiveColor: Colors.white,
             activeIcon: Icon(
               Icons.nightlight_round,

@@ -29,6 +29,5 @@ class TemplateTabletPage extends StatelessWidget {
         ),
       ]),
     );
-    ;
   }
 }

@@ -8,8 +8,8 @@ import 'package:web_demo/pages/template_page.dart';
 
 import '../components/list_empty_view.dart';
 import '../components/list_load_more.dart';
+import '../components/list_loading_view.dart';
 import '../core/provider/view_state.dart';
-import '../core/util/ui_util.dart';
 import 'article_list_viewmodel.dart';
 
 ///
@@ -41,7 +41,7 @@ class CategoryArticlesPage extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, ArticleListViewModel model) {
     if (model.viewState == ViewState.busy) {
-      return UIUtil.loading(context);
+      return ListLoadingView();
     }
 
     if (model.list.isEmpty) {

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:provider/provider.dart';
 import 'package:web_demo/pages/template_page.dart';
-import 'package:web_demo/style/context_style.dart';
 
 import '../components/cate_cell.dart';
+import '../components/list_loading_view.dart';
 import '../components/page_header.dart';
 import '../core/provider/view_state.dart';
-import '../core/util/ui_util.dart';
 import 'categories_viewmodel.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -33,7 +32,7 @@ class CategoriesPage extends StatelessWidget {
 
   Widget _buildContent(BuildContext context, CategoriesViewModel model) {
     if (model.viewState == ViewState.busy) {
-      return UIUtil.loading(context);
+      return ListLoadingView();
     }
 
     return SingleChildScrollView(

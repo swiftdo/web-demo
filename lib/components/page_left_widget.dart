@@ -11,8 +11,8 @@ class PageLeftWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.only(right: 10),
+      margin: EdgeInsets.only(top: context.headerPadding),
+      padding: EdgeInsets.only(right: context.headerPadding),
       child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Column(
           children: [
@@ -41,8 +41,8 @@ class PageLeftWidget extends StatelessWidget {
                       ClipOval(
                         child: Image.asset(
                           context.logoImg,
-                          width: 50,
-                          height: 50,
+                          width: 40,
+                          height: 40,
                         ),
                       ),
                     ]),

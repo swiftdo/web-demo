@@ -3,11 +3,11 @@ import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:web_demo/core/provider/provider.dart';
-import 'package:web_demo/core/util/ui_util.dart';
 import 'package:web_demo/pages/article_detail_viewmodel.dart';
 import 'package:web_demo/pages/template_page.dart';
 import 'package:web_demo/style/context_style.dart';
 
+import '../components/list_loading_view.dart';
 import '../components/page_header.dart';
 
 /// 文章详情页
@@ -39,7 +39,7 @@ class ArticleDetailPage extends StatelessWidget {
 
   Widget _buildDetail(ArticleDetailViewModel model, BuildContext context) {
     if (model.viewState == ViewState.busy) {
-      return UIUtil.loading(context);
+      return ListLoadingView();
     }
     return Container(
       color: context.bgColor,

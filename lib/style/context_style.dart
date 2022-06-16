@@ -21,4 +21,6 @@ extension ContextStyle on BuildContext {
 
   String get logoImg =>
       isDarkTheme ? 'assets/images/dark_logo.png' : 'assets/images/logo.png';
+
+  double get headerPadding => 12;
 }

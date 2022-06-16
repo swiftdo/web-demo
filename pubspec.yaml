@@ -12,7 +12,7 @@ dependencies:
   dio: ^4.0.6
   provider: ^6.0.3
   get_it: ^7.2.0
-  cupertino_icons: ^1.0.5
+  line_icons: ^2.0.1
   oktoast: ^3.2.0
   responsive_builder: ^0.4.2
   markdown_widget:

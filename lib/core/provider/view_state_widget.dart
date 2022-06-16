@@ -216,13 +216,15 @@ class ViewStateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-      child: child ??
-          Text(
-            textData ?? '重试',
-          ),
-      onPressed: onPressed,
+    return GestureDetector(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        child: child ??
+            Text(
+              textData ?? '重试',
+            ),
+      ),
+      onTap: onPressed,
     );
   }
 }

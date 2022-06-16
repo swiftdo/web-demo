@@ -57,13 +57,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.17.2"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.5"
   dio:
     dependency: "direct main"
     description:
@@ -163,6 +156,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.4"
+  line_icons:
+    dependency: "direct main"
+    description:
+      name: line_icons
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   logging:
     dependency: transitive
     description:
