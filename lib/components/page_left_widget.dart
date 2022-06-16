@@ -48,7 +48,7 @@ class PageLeftWidget extends StatelessWidget {
                       Text(
                         'OldBirds',
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 24,
                           color: context.primaryColor,
                         ),
                       ),
