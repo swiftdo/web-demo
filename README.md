@@ -6,6 +6,8 @@ Flutter 3.0 快速构建的一个站点样例
 
 更多精彩，请关注官方微信公众号: **Oldbirds**
 
+> 星数达 100+, 开源后端代码
+
 ## 安装
 
 0. git clone https://github.com/swiftdo/web-demo
@@ -20,8 +22,8 @@ Flutter 3.0 快速构建的一个站点样例
 
 ## TODO
 
-* [ ] 分类
-* [ ] 搜索
+- [ ] 分类
+- [ ] 搜索
 
 ## 配套课程
 
