@@ -20,10 +20,7 @@ class HomePage extends StatelessWidget {
         builder: (context, model, child) {
           return Column(
             children: [
-              PageHeader(
-                title: "文章",
-                canBack: false,
-              ),
+              PageHeader(title: "文章", canBack: false),
               Expanded(child: _buildContent(context, model))
             ],
           );

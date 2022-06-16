@@ -15,7 +15,7 @@ class LeftSidebarProvider extends ChangeNotifier {
 
   final List<LeftSideItem> items = [
     LeftSideItem(icon: Icons.article, title: "文章", path: "/"),
-    LeftSideItem(icon: Icons.tag, title: "分类", path: "/"),
+    LeftSideItem(icon: Icons.tag, title: "分类", path: "/articleCates"),
     LeftSideItem(
       icon: Icons.question_mark,
       title: "面试题",

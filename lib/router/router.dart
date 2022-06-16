@@ -5,6 +5,7 @@ import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 
+import '../pages/categories_page.dart';
 import '../pages/error_page.dart';
 
 class _WebPage extends CustomTransitionPage {
@@ -64,7 +65,14 @@ class Router {
             params: state.queryParams,
           ),
         ),
-      )
+      ),
+      GoRoute(
+        path: '/articleCates',
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: CategoriesPage(),
+        ),
+      ),
     ],
     errorPageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
       key: state.pageKey,
