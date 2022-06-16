@@ -2,9 +2,9 @@
 
 Flutter 3.0 快速构建的一个站点样例，长期维护。
 
-github ci 构建的版本(每次代码提交，自动构建)：[http://webdemo.oldbird.run](http://webdemo.oldbird.run), 采用 hash 路由策略
-
 > 星数达 **100+**, 开源后端代码
+
+在线预览：[http://webdemo.oldbird.run](http://webdemo.oldbird.run)
 
 | light mode                                                    | dark mode                                         |
 | ------------------------------------------------------------- | ------------------------------------------------- |
