@@ -22,11 +22,6 @@ Flutter 3.0 快速构建的一个站点样例，长期维护。
    $ fvm flutter run -d Chrome --web-port=53794
    ```
 
-## TODO
-
-- [ ] 分类
-- [ ] 搜索
-
 ## 支持运行到 macos 上
 
 ```
@@ -37,6 +32,11 @@ $ fvm flutter run -d macos
 | light mode                                                       | dark mode                                                        |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | ![WechatIMG957](https://blog.oldbird.run/mweb/WechatIMG957.jpeg) | ![WechatIMG958](https://blog.oldbird.run/mweb/WechatIMG958.jpeg) |
+
+## TODO
+
+- [ ] 分类
+- [ ] 搜索
 
 ## 配套课程
 
