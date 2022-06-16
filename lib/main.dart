@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/locator.dart';
+import 'package:web_demo/pages/search_viewmodel.dart';
 import 'package:web_demo/providers/left_sidebar_provider.dart';
 import 'package:web_demo/style/context_style.dart';
 import 'package:web_demo/style/theme_provider.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LeftSidebarProvider()),
+        ChangeNotifierProvider(create: (context) => SearchViewModel()),
       ],
       builder: (context, child) => Consumer<ThemeProvider>(
         builder: (context, model, child) {

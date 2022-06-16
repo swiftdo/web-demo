@@ -4,6 +4,7 @@ import 'package:web_demo/pages/about_page.dart';
 import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/home_page.dart';
+import 'package:web_demo/pages/search_page.dart';
 
 import '../pages/categories_page.dart';
 import '../pages/error_page.dart';
@@ -71,6 +72,13 @@ class Router {
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: CategoriesPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/search',
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: SearchPage(),
         ),
       ),
     ],

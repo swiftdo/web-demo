@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:web_demo/pages/search_viewmodel.dart';
 import 'package:web_demo/style/context_style.dart';
 
 import 'side_widget.dart';
@@ -81,6 +84,10 @@ class SideSearchView extends StatelessWidget {
           hintText: "搜一搜",
           isDense: true,
         ),
+        onSubmitted: (text) {
+          context.read<SearchViewModel>().searchKey = text;
+          context.push('/search');
+        },
       ),
     );
   }
