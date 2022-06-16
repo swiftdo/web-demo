@@ -1,12 +1,12 @@
 # web_demo
 
-Flutter 3.0 快速构建的一个站点样例
+Flutter 3.0 快速构建的一个站点样例，长期维护。
 
 - github ci 构建的版本(每次代码提交，自动构建)：[http://webdemo.oldbird.run](http://webdemo.oldbird.run), 采用 hash 路由策略
 
 更多精彩，请关注官方微信公众号: **Oldbirds**
 
-> 星数达 100+, 开源后端代码
+> 星数达 **100+**, 开源后端代码
 
 ## 安装
 
@@ -30,7 +30,7 @@ Flutter 3.0 快速构建的一个站点样例
 - [1. 网络请求篇](https://juejin.cn/post/6940962419355156494)
 - [2. 跨域篇](https://juejin.cn/post/6941744845803225102)
 - 3.状态管理篇: [Provider 中文文档](https://github.com/rrousselGit/provider/blob/master/resources/translations/zh-CN/README.md)
-- 4.路由篇
+- 4.路由篇 [go_router](https://gorouter.dev/)
 - 5.url 策略篇：[配置 Web 应用的 URL 策略](https://flutter.cn/docs/development/ui/navigation/url-strategies)
 - 6.上线部署篇
   - [在 Github 上部署一个 Flutter Web 应用](https://oldbird.run/flutter/t5-flutter-web-deploy.html#flutter-web)
