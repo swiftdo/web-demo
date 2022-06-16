@@ -35,7 +35,6 @@ $ fvm flutter run -d macos
 
 ## TODO
 
-- [ ] 分类
 - [ ] 搜索
 
 ## 配套课程
