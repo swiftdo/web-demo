@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icon.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:web_demo/pages/search_viewmodel.dart';
@@ -14,22 +13,31 @@ class PageRightWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: context.headerPadding),
-      padding: EdgeInsets.only(left: context.headerPadding),
+    return SingleChildScrollView(
+      padding: EdgeInsets.zero,
       child: Container(
-        alignment: Alignment.centerLeft,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [SideSearchView(), SideWidget(), SideSourceWidget()],
+        height: MediaQuery.of(context).size.height,
+        margin: EdgeInsets.only(top: context.headerPadding),
+        padding: EdgeInsets.only(left: context.headerPadding),
+        child: Container(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SideSearchView(),
+              SideWidget(),
+              SideSourceWidget(),
+              SideMiniSourceWidget()
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class SideMiniSourceWidget extends StatelessWidget {
-  const SideMiniSourceWidget({Key? key}) : super(key: key);
+class SideSourceWidget extends StatelessWidget {
+  const SideSourceWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,14 +70,14 @@ class SideMiniSourceWidget extends StatelessWidget {
   }
 }
 
-class SideSourceWidget extends StatelessWidget {
-  const SideSourceWidget({Key? key}) : super(key: key);
+class SideMiniSourceWidget extends StatelessWidget {
+  const SideMiniSourceWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 200,
-      margin: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           border: Border.all(
