@@ -28,8 +28,8 @@ class PageRightWidget extends StatelessWidget {
   }
 }
 
-class SideSourceWidget extends StatelessWidget {
-  const SideSourceWidget({Key? key}) : super(key: key);
+class SideMiniSourceWidget extends StatelessWidget {
+  const SideMiniSourceWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +57,35 @@ class SideSourceWidget extends StatelessWidget {
             style: TextStyle(fontSize: 14, color: Colors.blue),
           )
         ]),
+      ),
+    );
+  }
+}
+
+class SideSourceWidget extends StatelessWidget {
+  const SideSourceWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      margin: EdgeInsets.only(top: 20),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: context.borderColor,
+          ),
+          borderRadius: BorderRadius.circular(4)),
+      child: Column(
+        children: [
+          Text("想更方便获取站点内容，请扫码关注小程序"),
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            child: Image.asset(
+              'assets/images/wechat_mini.jpg',
+            ),
+          )
+        ],
       ),
     );
   }

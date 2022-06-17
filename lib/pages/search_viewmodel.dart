@@ -19,6 +19,7 @@ class SearchViewModel extends ViewStateRefreshListModel {
 
   set searchKey(String? text) {
     _searchKey = text;
+
     initData();
   }
 
