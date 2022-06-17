@@ -58,6 +58,8 @@ $ fvm flutter run -d macos
 
 flutter bug, 解决进度可关注：[Load fonts as soon as detecting browser locale](https://github.com/flutter/flutter/issues/77023)
 
+编译渲染项设置为 html，不会出现该问题。
+
 ### 4.页面刷新，或者指定 url 无法打开页面
 
 跟 url 策略有关
