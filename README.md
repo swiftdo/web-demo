@@ -4,7 +4,7 @@ Flutter 3.0 快速构建的一个站点样例，长期维护。
 
 > 星数达 **100+**, 开源后端代码
 
-在线预览：[http://webdemo.oldbird.run](http://webdemo.oldbird.run)
+在线预览：[https://webdemo.oldbird.run](http://webdemo.oldbird.run)
 
 | light mode                                                    | dark mode                                         |
 | ------------------------------------------------------------- | ------------------------------------------------- |
