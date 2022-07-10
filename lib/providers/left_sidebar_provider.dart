@@ -21,6 +21,11 @@ class LeftSidebarProvider extends ChangeNotifier {
       icon: LineIcons.question,
       title: "面试题",
       path: "/categoryArticles/62a9749d6927690001ca3a9f?title=面试题",
+    ),
+    LeftSideItem(
+      icon: LineIcons.book,
+      title: "开源书籍",
+      path: '/categoryArticles/62c4f9947ab3bd0001fd47de?title=开源书籍',
     )
   ];
 

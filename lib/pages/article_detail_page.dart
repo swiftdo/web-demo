@@ -52,6 +52,7 @@ class ArticleDetailPage extends StatelessWidget {
               ? MarkdownTheme.darkTheme
               : MarkdownTheme.lightTheme,
           pConfig: PConfig(
+            textStyle: TextStyle(fontSize: 15, height: 1.7),
             onLinkTap: (url) {
               if (url != null) {
                 launch(url);
