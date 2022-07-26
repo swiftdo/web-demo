@@ -27,7 +27,7 @@ class PageRightWidget extends StatelessWidget {
               SideSearchView(),
               SideWidget(),
               SideSourceWidget(),
-              SideMiniSourceWidget()
+              // SideMiniSourceWidget()
             ],
           ),
         ),
