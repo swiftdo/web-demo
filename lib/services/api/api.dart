@@ -72,7 +72,7 @@ class ApiImpl implements Api {
     List<String> queries = [
       Query.offset((pageNo - 1) * pageSize),
       Query.limit(pageSize),
-      Query.equal("categoryId", categoryId),
+      if (categoryId?.isNotEmpty == true) Query.equal("categoryId", categoryId),
       Query.orderDesc("publishDate"),
     ];
     return _queryArticles(queries);
