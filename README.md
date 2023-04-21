@@ -12,12 +12,11 @@ Flutter 3.7 快速构建的一个站点样例，长期维护。
 
 0. git clone https://github.com/swiftdo/web-demo
 1. 安装 fvm 工具: [leoafarias/fvm](https://github.com/leoafarias/fvm)
-2. 运行到 Chrome，需要指定端口为 `53794`
 
    ```sh
    $ cd web-demo
    $ fvm install
-   $ fvm flutter run -d Chrome --web-port=53794
+   $ fvm flutter run -d Chrome
    ```
 
 ## 支持运行到 macos 上
