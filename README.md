@@ -1,8 +1,6 @@
 # web_demo
 
-Flutter 3.0 快速构建的一个站点样例，长期维护。
-
-> 星数达 **100+**, 开源后端代码
+Flutter 3.7 快速构建的一个站点样例，长期维护。
 
 在线预览：[https://webdemo.oldbird.run](https://webdemo.oldbird.run)
 
