@@ -64,13 +64,13 @@ class ApiImpl implements Api {
   @override
   Future<Category> fetchCategory(String categoryId) async {
     final cateRes = await databases.getDocument(databaseId: Constants.databaseOfBlog, collectionId: Constants.collectionOfCategory, documentId: categoryId);
-    return  Category.fromJson(cateRes.data);
+    return Category.fromJson(cateRes.data);
   }
 
   @override
   Future<List<ArticleModel>> fetchArticleList({required int pageNo, int pageSize = 20, String? categoryId}) async{
     List<String> queries = [
-      Query.offset(pageNo * pageSize),
+      Query.offset((pageNo - 1) * pageSize),
       Query.limit(pageSize),
       Query.equal("categoryId", categoryId),
       Query.orderDesc("publishDate"),
@@ -81,7 +81,7 @@ class ApiImpl implements Api {
   @override
   Future<List<ArticleModel>> searchArticleList({required int pageNo, int pageSize = 20, String? searchKey}) async{
     List<String> queries = [
-      Query.offset(pageNo * pageSize),
+      Query.offset((pageNo - 1) * pageSize),
       Query.limit(pageSize),
       if (searchKey?.isNotEmpty == true) Query.search("content", searchKey!),
       Query.orderDesc("publishDate"),
