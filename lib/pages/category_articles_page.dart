@@ -51,7 +51,7 @@ class CategoryArticlesPage extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         if (index < model.list.length) {
-          Article article = model.list[index];
+          ArticleModel article = model.list[index];
           return ArticleCell(article: article);
         } else {
           return ListLoadMore(

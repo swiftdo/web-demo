@@ -31,7 +31,7 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
       /// 页面已经加载了数据,如果刷新报错,不应该直接跳转错误页面
       /// 而是显示之前的页面数据.给出错误提示
       if (init) list.clear();
-      setError(e, s);
+      setError(e.toString());
       return null;
     }
   }

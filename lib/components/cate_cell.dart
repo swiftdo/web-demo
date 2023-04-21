@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:web_demo/models/models.dart';
 import 'package:web_demo/style/context_style.dart';
 
+import '../models/category.dart';
+
 class CateCell extends StatelessWidget {
   final Category category;
   const CateCell({Key? key, required this.category}) : super(key: key);

@@ -73,7 +73,7 @@ class ViewStateWidget extends StatelessWidget {
 
 /// ErrorWidget
 class ViewStateErrorWidget extends StatelessWidget {
-  final ViewStateError error;
+  final String error;
   final String? title;
   final String? message;
   final Widget? image;
@@ -96,32 +96,8 @@ class ViewStateErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var defaultImage;
     var defaultTitle;
-    var errorMessage = error.message;
+    var errorMessage = error;
     String defaultTextData = '重新加载';
-    switch (error.errorType) {
-      case ViewStateErrorType.networkTimeOutError:
-        defaultImage = Transform.translate(
-          offset: Offset(-50, 0),
-          child: const Icon(Icons.signal_cellular_connected_no_internet_4_bar,
-              size: 100, color: Colors.grey),
-        );
-        defaultTitle = '网络错误';
-        // errorMessage = ''; // 网络异常移除message提示
-        break;
-      case ViewStateErrorType.defaultError:
-        defaultImage = const Icon(Icons.error, size: 100, color: Colors.grey);
-        defaultTitle = '未知异常';
-        break;
-
-      case ViewStateErrorType.unauthorizedError:
-        return ViewStateUnAuthWidget(
-          image: image,
-          message: message,
-          buttonText: buttonText,
-          onPressed: onPressed,
-        );
-    }
-
     return ViewStateWidget(
       onPressed: this.onPressed,
       image: image ?? defaultImage,

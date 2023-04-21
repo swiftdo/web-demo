@@ -5,7 +5,7 @@ import 'package:web_demo/models/models.dart';
 import 'package:web_demo/style/context_style.dart';
 
 class ArticleCell extends StatelessWidget {
-  final Article article;
+  final ArticleModel article;
 
   ArticleCell({required this.article});
 
@@ -13,7 +13,7 @@ class ArticleCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push('/detail/${article.id}');
+        context.push('/detail/${article.article.id}');
       },
       behavior: HitTestBehavior.opaque,
       child: Container(
@@ -26,7 +26,7 @@ class ArticleCell extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    article.title,
+                    article.article.title,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

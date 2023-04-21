@@ -14,11 +14,8 @@ class ArticleListViewModel extends ViewStateRefreshListModel {
   }
 
   @override
-  Future<List<Article>> loadData({int pageNum = 1}) async {
-    Map res = await api.fetchArticleList(
+  Future<List<ArticleModel>> loadData({int pageNum = 1}) async {
+    return await api.fetchArticleList(
         pageNo: pageNum, pageSize: pageSize, categoryId: categoryId);
-    return ValueUtil.toList(res['data'])
-        .map((e) => Article.fromMap(e))
-        .toList();
   }
 }

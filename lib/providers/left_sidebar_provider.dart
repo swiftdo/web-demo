@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../constants.dart';
+
 class LeftSideItem {
   final IconData icon;
   final String title;
@@ -20,12 +22,12 @@ class LeftSidebarProvider extends ChangeNotifier {
     LeftSideItem(
       icon: LineIcons.question,
       title: "面试题",
-      path: "/categoryArticles/62a9749d6927690001ca3a9f?title=面试题",
+      path: "/categoryArticles/${Constants.categoryIdOfReview}?title=面试题",
     ),
     LeftSideItem(
       icon: LineIcons.book,
       title: "开源书籍",
-      path: '/categoryArticles/62c4f9947ab3bd0001fd47de?title=开源书籍',
+      path: '/categoryArticles/${Constants.categoryIdOfEbook}?title=开源书籍',
     )
   ];
 

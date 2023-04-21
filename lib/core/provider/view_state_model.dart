@@ -1,4 +1,5 @@
-import 'package:dio/dio.dart';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -8,9 +9,8 @@ class ViewStateModel extends ChangeNotifier {
   /// 防止页面销毁后，异步任务才完成，导致报错
   bool _disposed = false;
 
-  /// ViewStateError
-  ViewStateError? _viewStateError;
-  ViewStateError? get viewStateError => _viewStateError;
+  String? _errorMsg;
+  String? get errorMsg => _errorMsg;
 
   /// 当前的页面状态,默认为busy,可在viewModel的构造方法中指定;
   late ViewState _viewState;
@@ -22,7 +22,7 @@ class ViewStateModel extends ChangeNotifier {
   }
 
   set viewState(ViewState viewState) {
-    _viewStateError = null;
+    _errorMsg = null;
     _viewState = viewState;
     notifyListeners();
   }
@@ -40,49 +40,15 @@ class ViewStateModel extends ChangeNotifier {
     viewState = ViewState.empty;
   }
 
-  /// [e]分类Error和Exception两种
-  void setError(e, stackTrace, {String? message}) {
-    ViewStateErrorType errorType = ViewStateErrorType.defaultError;
-
-    /// 见https://github.com/flutterchina/dio/blob/master/README-ZH.md#dioerrortype
-    if (e is DioError) {
-      if (e.type == DioErrorType.connectionTimeout ||
-          e.type == DioErrorType.sendTimeout ||
-          e.type == DioErrorType.receiveTimeout) {
-        // timeout
-        errorType = ViewStateErrorType.networkTimeOutError;
-        message = e.error.toString();
-      } else if (e.type == DioErrorType.badResponse) {
-        // incorrect status, such as 404, 503...
-        message = e.error.toString();
-      } else if (e.type == DioErrorType.cancel) {
-        message = e.error.toString();
-      } else {
-        // dio将原error重新套了一层
-        e = e.error;
-        message = e.message;
-      }
-    }
+  void setError(String error) {
+    _errorMsg = error;
     viewState = ViewState.error;
-    _viewStateError = ViewStateError(
-      errorType,
-      message: message,
-      errorMessage: e.toString(),
-    );
-    printErrorStack(e, stackTrace);
-    onError(viewStateError!);
   }
-
-  void onError(ViewStateError viewStateError) {}
 
   /// 显示错误消息
   showErrorMessage(context, {String? message}) {
-    if (viewStateError != null || message != null) {
-      if (viewStateError?.isNetworkTimeOut) {
-        message ??= '网络错误';
-      } else {
-        message ??= viewStateError?.message;
-      }
+    if (_errorMsg != null || message != null) {
+      message ??= errorMsg;
       Future.microtask(() {
         showToast(message!, context: context);
       });
@@ -91,7 +57,7 @@ class ViewStateModel extends ChangeNotifier {
 
   @override
   String toString() {
-    return 'BaseModel{_viewState: $viewState, _viewStateError: $_viewStateError}';
+    return 'BaseModel{_viewState: $viewState, _viewStateError: $errorMsg}';
   }
 
   @override

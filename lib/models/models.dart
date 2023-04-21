@@ -1,42 +1,16 @@
-import 'package:web_demo/core/util/value_util.dart';
-import 'package:web_demo/core/util/date_util.dart';
+import '../core/util/date_util.dart';
+import 'article.dart';
+import 'category.dart';
 
-abstract class BaseModel {}
+class ArticleModel {
+  final Article article;
+  final Category category;
 
-class Article extends BaseModel {
-  String id;
-  String userId;
-  int publishDate;
-  int lastModifyDate;
-  String title;
-  Category category;
 
-  String content;
+  final String showDetail;
 
-  int viewCount;
-  int likeCount;
+  String get showDate => DateUtil.readTimestamp(article.publishDate);
 
-  String get showDetail => '# $title\n' + content;
 
-  String get showDate => DateUtil.readTimestamp(publishDate);
-
-  Article.fromMap(Map json)
-      : id = ValueUtil.toStr(json['_id']),
-        userId = ValueUtil.toStr(json['user_id']),
-        publishDate = ValueUtil.toInt(json['publish_date']),
-        lastModifyDate = ValueUtil.toInt(json['last_modify_date']),
-        title = ValueUtil.toStr(json['title']),
-        category = Category.fromMap(ValueUtil.toMap(json['category'])),
-        viewCount = ValueUtil.toInt(json['view_count']),
-        likeCount = ValueUtil.toInt(json['like_count']),
-        content = ValueUtil.toStr(json['content']);
-}
-
-class Category extends BaseModel {
-  String id;
-  String name;
-
-  Category.fromMap(Map json)
-      : id = ValueUtil.toStr(json['_id']),
-        name = ValueUtil.toStr(json['name']);
+  ArticleModel({required this.article, required this.category}): showDetail = '# ${article.title}\n' + article.content;
 }

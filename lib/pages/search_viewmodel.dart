@@ -24,11 +24,8 @@ class SearchViewModel extends ViewStateRefreshListModel {
   }
 
   @override
-  Future<List<Article>> loadData({int pageNum = 1}) async {
-    Map res = await api.searchArticleList(
-        pageNo: pageNum, pageSize: pageSize, searchKey: _searchKey);
-    return ValueUtil.toList(res['data'])
-        .map((e) => Article.fromMap(e))
-        .toList();
+  Future<List<ArticleModel>> loadData({int pageNum = 1}) async {
+    return await api.searchArticleList(
+        pageNo: pageNum, pageSize: pageSize, searchKey: _searchKey,);
   }
 }
