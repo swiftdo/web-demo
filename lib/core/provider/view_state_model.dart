@@ -46,18 +46,18 @@ class ViewStateModel extends ChangeNotifier {
 
     /// 见https://github.com/flutterchina/dio/blob/master/README-ZH.md#dioerrortype
     if (e is DioError) {
-      if (e.type == DioErrorType.connectTimeout ||
+      if (e.type == DioErrorType.connectionTimeout ||
           e.type == DioErrorType.sendTimeout ||
           e.type == DioErrorType.receiveTimeout) {
         // timeout
         errorType = ViewStateErrorType.networkTimeOutError;
-        message = e.error;
-      } else if (e.type == DioErrorType.response) {
+        message = e.error.toString();
+      } else if (e.type == DioErrorType.badResponse) {
         // incorrect status, such as 404, 503...
-        message = e.error;
+        message = e.error.toString();
       } else if (e.type == DioErrorType.cancel) {
         // to be continue...
-        message = e.error;
+        message = e.error.toString();
       } else {
         // dio将原error重新套了一层
         e = e.error;

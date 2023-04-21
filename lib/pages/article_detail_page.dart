@@ -45,21 +45,22 @@ class ArticleDetailPage extends StatelessWidget {
       color: context.bgColor,
       child: MarkdownWidget(
         data: model.article!.showDetail,
-        controller: tocController,
+        tocController: tocController,
         padding: EdgeInsets.only(bottom: 50, left: 16, right: 16, top: 16),
-        styleConfig: StyleConfig(
-          markdownTheme: context.isDarkTheme
-              ? MarkdownTheme.darkTheme
-              : MarkdownTheme.lightTheme,
-          pConfig: PConfig(
-            textStyle: TextStyle(fontSize: 15, height: 1.7),
-            onLinkTap: (url) {
-              if (url != null) {
-                launch(url);
-              }
+        config: (context.isDarkTheme
+                ? MarkdownConfig.darkConfig
+                : MarkdownConfig.defaultConfig)
+            .copy(configs: [
+          LinkConfig(
+            style: TextStyle(
+              color: Colors.red,
+              decoration: TextDecoration.underline,
+            ),
+            onTap: (url) {
+              launch(url);
             },
-          ),
-        ),
+          )
+        ]),
       ),
     );
   }

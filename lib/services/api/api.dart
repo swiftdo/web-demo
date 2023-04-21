@@ -34,9 +34,10 @@ class ApiImpl implements Api {
   ApiImpl() {
     _dio = Dio(
       BaseOptions(
-          baseUrl: locator<Config>().baseUrl,
-          connectTimeout: 20000,
-          receiveTimeout: 20000),
+        baseUrl: locator<Config>().baseUrl,
+        connectTimeout: Duration(seconds: 20),
+        receiveTimeout: Duration(seconds: 20),
+      ),
     );
   }
 

@@ -12,14 +12,18 @@ class AboutPage extends StatelessWidget {
         child: MarkdownWidget(
           data: _aboutme,
           padding: EdgeInsets.only(bottom: 50, left: 16, right: 16, top: 16),
-          styleConfig: StyleConfig(
-            pConfig: PConfig(
-              onLinkTap: (url) {
-                if (url != null) {
+          config: MarkdownConfig(
+            configs: [
+              LinkConfig(
+                style: TextStyle(
+                  color: Colors.red,
+                  decoration: TextDecoration.underline,
+                ),
+                onTap: (url) {
                   launch(url);
-                }
-              },
-            ),
+                },
+              )
+            ],
           ),
         ),
       ),
