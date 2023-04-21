@@ -56,7 +56,6 @@ class ViewStateModel extends ChangeNotifier {
         // incorrect status, such as 404, 503...
         message = e.error.toString();
       } else if (e.type == DioErrorType.cancel) {
-        // to be continue...
         message = e.error.toString();
       } else {
         // dio将原error重新套了一层

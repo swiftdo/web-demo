@@ -7,7 +7,7 @@ Flutter 3.0 快速构建的一个站点样例，长期维护。
 在线预览：[https://webdemo.oldbird.run](https://webdemo.oldbird.run)
 
 | light mode                                                    | dark mode                                         |
-| ------------------------------------------------------------- | ------------------------------------------------- |
+|---------------------------------------------------------------|---------------------------------------------------|
 | ![image-light](https://blog.oldbird.run/mweb/image-light.png) | ![](https://blog.oldbird.run/mweb/image-dark.png) |
 
 ## 安装
@@ -30,7 +30,7 @@ $ fvm flutter run -d macos
 ```
 
 | light mode                                                       | dark mode                                                        |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+|------------------------------------------------------------------|------------------------------------------------------------------|
 | ![WechatIMG958](https://blog.oldbird.run/mweb/WechatIMG958.jpeg) | ![WechatIMG957](https://blog.oldbird.run/mweb/WechatIMG957.jpeg) |
 
 ## 配套课程
@@ -66,7 +66,7 @@ flutter bug, 解决进度可关注：[Load fonts as soon as detecting browser lo
 跟 url 策略有关
 
 - HashUrlStrategy，hash 路由，带有`#`, 可直接 github 静态托管
-- PathUrlStrategy, histroy 路由，也可以直接 github 托管，但是刷新页面会出问题，此类，需要 nginx 做个配置，单页面实际上只有一个页面 index.html，因此将所有的页面都 rewirte 到 index 页面，即可完成配置
+- PathUrlStrategy, history 路由，也可以直接 github 托管，但是刷新页面会出问题，此类，需要 nginx 做个配置，单页面实际上只有一个页面 index.html，因此将所有的页面都 rewirte 到 index 页面，即可完成配置
 
 ```nginx
 location @router {
