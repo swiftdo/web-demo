@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+<!DOCTYPE html><html><head>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -25,133 +22,20 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <style type="text/css">
-    /* 初始动画 */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: white;
-      /*#ee6736*/
-      ;
-      z-index: 9999;
-      transition: opacity .65s
-    }
-
-    .preloader-hidden-add {
-      opacity: 1;
-      display: block
-    }
-
-    .preloader-hidden-add-active {
-      opacity: 0
-    }
-
-    .preloader-hidden {
-      display: none
-    }
-
-    .cs-loader {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%
-    }
-
-    .cs-loader-inner {
-      transform: translateY(-50%);
-      top: 50%;
-      position: absolute;
-      width: 100%;
-      color: #EF5138;
-      text-align: center
-    }
-
-    .cs-loader-inner label {
-      font-size: 20px;
-      opacity: 0;
-      display: inline-block
-    }
-
-    @keyframes lol {
-      0% {
-        opacity: 0;
-        transform: translateX(-300px)
-      }
-
-      33% {
-        opacity: 1;
-        transform: translateX(0)
-      }
-
-      66% {
-        opacity: 1;
-        transform: translateX(0)
-      }
-
-      100% {
-        opacity: 0;
-        transform: translateX(300px)
-      }
-    }
-
-    .cs-loader-inner label:nth-child(6) {
-      animation: lol 3s infinite ease-in-out
-    }
-
-    .cs-loader-inner label:nth-child(5) {
-      animation: lol 3s .1s infinite ease-in-out
-    }
-
-    .cs-loader-inner label:nth-child(4) {
-      animation: lol 3s .2s infinite ease-in-out
-    }
-
-    .cs-loader-inner label:nth-child(3) {
-      animation: lol 3s .3s infinite ease-in-out
-    }
-
-    .cs-loader-inner label:nth-child(2) {
-      animation: lol 3s .4s infinite ease-in-out
-    }
-
-    .cs-loader-inner label:nth-child(1) {
-      animation: lol 3s .5s infinite ease-in-out
-    }
-  </style>
-  <title>flutter</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Oldbird</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="splash/style.css">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <script src="splash/splash.js"></script>
 </head>
 
-<body>
-  <div id="app_splash">
-    <div class="preloader">
-      <div class="cs-loader">
-        <div class="cs-loader-inner">
-          <label> ●</label>
-          <label> ●</label>
-          <label> ●</label>
-          <label> ●</label>
-          <label> ●</label>
-          <label> ●</label>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('flutter-first-frame', function () {
-        document.getElementById("app_splash")?.remove();
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
+<body>  <picture id="splash">
+      <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+      <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>      
   <script src="main.dart.js" type="application/javascript"></script>
-</body>
 
-</html>
+
+</body></html>

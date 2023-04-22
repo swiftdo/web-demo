@@ -22,6 +22,7 @@ dependencies:
   appwrite: ^9.0.0
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
+  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   build_runner: ^2.3.3
@@ -40,3 +41,11 @@ flutter:
     - assets/images/logo.png
     - assets/images/dark_logo.png
     - assets/images/wechat_mini.jpg
+
+
+flutter_native_splash:
+  color: "#ffffff" # 你想要的背景色
+  image: assets/images/splash_logo.png # 你的启动屏幕图片路径
+  android: true
+  ios: true
+  web: true

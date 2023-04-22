@@ -6,7 +6,6 @@ class ArticleModel {
   final Article article;
   final Category category;
 
-
   final String showDetail;
 
   String get showDate => DateUtil.readTimestamp(article.publishDate);
