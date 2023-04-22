@@ -45,7 +45,8 @@ class PageLeftWidget extends StatelessWidget {
                           height: 40,
                         ),
                       ),
-                      Text('老鸟'),
+                      SizedBox(width: 4,),
+                      Text('Oldbird', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                     ]),
                   );
                 }
