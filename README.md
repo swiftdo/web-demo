@@ -26,10 +26,6 @@ $ cd web-demo
 $ fvm flutter run -d macos
 ```
 
-| light mode                                                       | dark mode                                                        |
-|------------------------------------------------------------------|------------------------------------------------------------------|
-| ![WechatIMG958](https://blog.oldbird.run/mweb/WechatIMG958.jpeg) | ![WechatIMG957](https://blog.oldbird.run/mweb/WechatIMG957.jpeg) |
-
 ## 配套课程
 
 - [1. 网络请求篇](https://juejin.cn/post/6940962419355156494)
