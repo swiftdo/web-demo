@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:web_demo/pages/about_page.dart';
 import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
+import 'package:web_demo/pages/dashboard_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 import 'package:web_demo/pages/search_page.dart';
 
 import '../pages/categories_page.dart';
 import '../pages/error_page.dart';
+import '../pages/login_page.dart';
 
 class _WebPage extends CustomTransitionPage {
   _WebPage({
@@ -79,6 +81,20 @@ class Router {
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: SearchPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/login',
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: LoginPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/dashboard',
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: DashboardPage(),
         ),
       ),
     ],

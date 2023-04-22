@@ -8,4 +8,5 @@ class Constants {
 
   static const categoryIdOfReview = "6442bfe1ea1cea508a6d";
   static const categoryIdOfEbook = "6442bfeaea8eceb9fc87";
+  static const keyOfSessionId = "keyOfSessionId";
 }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/style/context_style.dart';
 
+import '../providers/auth_provider.dart';
 import '../providers/left_sidebar_provider.dart';
 
 class PageLeftWidget extends StatelessWidget {
@@ -13,67 +14,97 @@ class PageLeftWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: context.headerPadding),
       padding: EdgeInsets.only(right: context.headerPadding),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                context.push('/');
-              },
-              child: LayoutBuilder(builder: (context, constraints) {
-                final itemWith = constraints.maxWidth - 20;
-                bool showIcon = itemWith < 150 + 10;
-                if (showIcon) {
-                  return Container(
-                    child: ClipOval(
-                      child: Image.asset(
-                        "assets/images/logo.png",
-                        width: 40,
-                        height: 40,
-                      ),
-                    ),
-                  );
-                } else {
-                  return Container(
-                    width: 150,
-                    alignment: Alignment.centerLeft,
-                    child: Row(children: [
-                      ClipOval(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.push('/');
+                },
+                child: LayoutBuilder(builder: (context, constraints) {
+                  final itemWith = constraints.maxWidth - 20;
+                  bool showIcon = itemWith < 150 + 10;
+                  if (showIcon) {
+                    return Container(
+                      child: ClipOval(
                         child: Image.asset(
-                          context.logoImg,
+                          "assets/images/logo.png",
                           width: 40,
                           height: 40,
                         ),
                       ),
-                      SizedBox(width: 4,),
-                      Text('Oldbird', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                    ]),
-                  );
-                }
+                    );
+                  } else {
+                    return Container(
+                      width: 150,
+                      alignment: Alignment.centerLeft,
+                      child: Row(children: [
+                        ClipOval(
+                          child: Image.asset(
+                            context.logoImg,
+                            width: 40,
+                            height: 40,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          'Oldbird',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ]),
+                    );
+                  }
+                }),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Consumer<LeftSidebarProvider>(builder: (context, model, child) {
+                return Column(
+                  children: model.items.map((e) {
+                    int index = model.items.indexOf(e);
+                    return PageLeftItem(
+                      title: e.title,
+                      icon: e.icon,
+                      isSelect: index == model.selectIndex,
+                      onTap: () {
+                        model.selectIndex = index;
+                        context.push(e.path);
+                      },
+                    );
+                  }).toList(),
+                );
               }),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Consumer<LeftSidebarProvider>(builder: (context, model, child) {
-              return Column(
-                children: model.items.map((e) {
-                  int index = model.items.indexOf(e);
+              Consumer(builder: (context, AuthProvider provider, child) {
+                if (provider.account == null) {
                   return PageLeftItem(
-                    title: e.title,
-                    icon: e.icon,
-                    isSelect: index == model.selectIndex,
+                    title: '登录',
+                    icon: Icons.login,
+                    isSelect: false,
                     onTap: () {
-                      model.selectIndex = index;
-                      context.push(e.path);
+                      context.push("/login");
                     },
                   );
-                }).toList(),
-              );
-            })
-          ],
-        )
-      ]),
+                } else {
+                  return PageLeftItem(
+                    title: '控制台',
+                    icon: Icons.dashboard,
+                    isSelect: false,
+                    onTap: () {
+                      context.push("/dashboard");
+                    },
+                  );
+                }
+              })
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

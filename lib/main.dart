@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:web_demo/locator.dart';
 import 'package:web_demo/pages/search_viewmodel.dart';
+import 'package:web_demo/providers/auth_provider.dart';
 import 'package:web_demo/providers/left_sidebar_provider.dart';
 import 'package:web_demo/style/context_style.dart';
 import 'package:web_demo/style/theme_provider.dart';
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LeftSidebarProvider()),
         ChangeNotifierProvider(create: (context) => SearchViewModel()),
@@ -31,6 +34,7 @@ class MyApp extends StatelessWidget {
             routerDelegate: GetX.router.routerDelegate,
             routeInformationParser: GetX.router.routeInformationParser,
             theme: context.currentTheme,
+            builder: EasyLoading.init(),
           );
         },
       ),
