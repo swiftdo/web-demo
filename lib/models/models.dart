@@ -12,5 +12,5 @@ class ArticleModel {
   String get showDate => DateUtil.readTimestamp(article.publishDate);
 
 
-  ArticleModel({required this.article, required this.category}): showDetail = '# ${article.title}\n' + article.content;
+  ArticleModel({required this.article, required this.category}): showDetail = article.content;
 }
