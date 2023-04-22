@@ -44,17 +44,13 @@ $ fvm flutter run -d macos
 
 可通过编译选项控制，[【编译渲染项】](https://flutter.cn/docs/development/tools/web-renderers)
 
-### 2.手机端滑动太卡
-
-待解决
-
-### 3.中文显示有问题
+### 2.中文显示有问题
 
 flutter bug, 解决进度可关注：[Load fonts as soon as detecting browser locale](https://github.com/flutter/flutter/issues/77023)
 
 编译渲染项设置为 html，不会出现该问题。
 
-### 4.页面刷新，或者指定 url 无法打开页面
+### 3.页面刷新，或者指定 url 无法打开页面
 
 跟 url 策略有关
 
@@ -67,7 +63,7 @@ location @router {
 }
 ```
 
-### 5. SEO 问题
+### 4. SEO 问题
 
 建立一个 seo 友好的网站意味着谷歌和其他搜索引擎可以高效地抓取网站上的每个页面，有效地解释内容，并将其索引到数据库中。一旦编入索引，他们就可以根据用户搜索的主题向用户提供最相关、最有价值的网页。
 
