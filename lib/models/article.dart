@@ -12,13 +12,13 @@ class Article with _$Article {
     required int publishDate,
     int? lastModifyDate,
     required String title,
+    String? cover,
+    String? desc,
     required String categoryId,
     required String content,
     @Default(0) int viewCount,
     @Default(0) int likeCount,
   }) = _Article;
-
-
 
   factory Article.fromJson(Map<String, dynamic> json) =>
       _$ArticleFromJson(json);

@@ -26,6 +26,8 @@ mixin _$Article {
   int get publishDate => throw _privateConstructorUsedError;
   int? get lastModifyDate => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String? get cover => throw _privateConstructorUsedError;
+  String? get desc => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   int get viewCount => throw _privateConstructorUsedError;
@@ -47,6 +49,8 @@ abstract class $ArticleCopyWith<$Res> {
       int publishDate,
       int? lastModifyDate,
       String title,
+      String? cover,
+      String? desc,
       String categoryId,
       String content,
       int viewCount,
@@ -71,6 +75,8 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     Object? publishDate = null,
     Object? lastModifyDate = freezed,
     Object? title = null,
+    Object? cover = freezed,
+    Object? desc = freezed,
     Object? categoryId = null,
     Object? content = null,
     Object? viewCount = null,
@@ -97,6 +103,14 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      cover: freezed == cover
+          ? _value.cover
+          : cover // ignore: cast_nullable_to_non_nullable
+              as String?,
+      desc: freezed == desc
+          ? _value.desc
+          : desc // ignore: cast_nullable_to_non_nullable
+              as String?,
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -130,6 +144,8 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       int publishDate,
       int? lastModifyDate,
       String title,
+      String? cover,
+      String? desc,
       String categoryId,
       String content,
       int viewCount,
@@ -151,6 +167,8 @@ class __$$_ArticleCopyWithImpl<$Res>
     Object? publishDate = null,
     Object? lastModifyDate = freezed,
     Object? title = null,
+    Object? cover = freezed,
+    Object? desc = freezed,
     Object? categoryId = null,
     Object? content = null,
     Object? viewCount = null,
@@ -177,6 +195,14 @@ class __$$_ArticleCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      cover: freezed == cover
+          ? _value.cover
+          : cover // ignore: cast_nullable_to_non_nullable
+              as String?,
+      desc: freezed == desc
+          ? _value.desc
+          : desc // ignore: cast_nullable_to_non_nullable
+              as String?,
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -206,6 +232,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
       required this.publishDate,
       this.lastModifyDate,
       required this.title,
+      this.cover,
+      this.desc,
       required this.categoryId,
       required this.content,
       this.viewCount = 0,
@@ -226,6 +254,10 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
   @override
   final String title;
   @override
+  final String? cover;
+  @override
+  final String? desc;
+  @override
   final String categoryId;
   @override
   final String content;
@@ -238,7 +270,7 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Article(id: $id, userId: $userId, publishDate: $publishDate, lastModifyDate: $lastModifyDate, title: $title, categoryId: $categoryId, content: $content, viewCount: $viewCount, likeCount: $likeCount)';
+    return 'Article(id: $id, userId: $userId, publishDate: $publishDate, lastModifyDate: $lastModifyDate, title: $title, cover: $cover, desc: $desc, categoryId: $categoryId, content: $content, viewCount: $viewCount, likeCount: $likeCount)';
   }
 
   @override
@@ -251,6 +283,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
       ..add(DiagnosticsProperty('publishDate', publishDate))
       ..add(DiagnosticsProperty('lastModifyDate', lastModifyDate))
       ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('cover', cover))
+      ..add(DiagnosticsProperty('desc', desc))
       ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('viewCount', viewCount))
@@ -269,6 +303,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
             (identical(other.lastModifyDate, lastModifyDate) ||
                 other.lastModifyDate == lastModifyDate) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.cover, cover) || other.cover == cover) &&
+            (identical(other.desc, desc) || other.desc == desc) &&
             (identical(other.categoryId, categoryId) ||
                 other.categoryId == categoryId) &&
             (identical(other.content, content) || other.content == content) &&
@@ -280,8 +316,19 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, publishDate,
-      lastModifyDate, title, categoryId, content, viewCount, likeCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userId,
+      publishDate,
+      lastModifyDate,
+      title,
+      cover,
+      desc,
+      categoryId,
+      content,
+      viewCount,
+      likeCount);
 
   @JsonKey(ignore: true)
   @override
@@ -304,6 +351,8 @@ abstract class _Article implements Article {
       required final int publishDate,
       final int? lastModifyDate,
       required final String title,
+      final String? cover,
+      final String? desc,
       required final String categoryId,
       required final String content,
       final int viewCount,
@@ -322,6 +371,10 @@ abstract class _Article implements Article {
   int? get lastModifyDate;
   @override
   String get title;
+  @override
+  String? get cover;
+  @override
+  String? get desc;
   @override
   String get categoryId;
   @override
