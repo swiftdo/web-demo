@@ -30,6 +30,31 @@ class _DashboardPageState extends State<DashboardPage> {
           )
         ],
       ),
+      body: ListView(
+        children: [
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              context.push('/article/create');
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      offset: Offset.zero,
+                      blurRadius: 10,
+                    ),
+                  ]),
+              margin: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+              padding: EdgeInsets.all(20),
+              child: Text('创建文章'),
+            ),
+          )
+        ],
+      ),
     );
   }
 

@@ -1,3 +1,5 @@
+import 'package:web_demo/core/util/date_util.dart';
+
 import '../../models/article.dart';
 import '../../models/category.dart';
 import '../../models/models.dart';
@@ -34,6 +36,16 @@ abstract class Api {
 
   /// 获取账号
   Future<User> getAccount();
+
+  /// 创建文章
+  Future createArticle({
+    required String userId,
+    required String title,
+    required String categoryId,
+    required String content,
+    required String desc,
+    String? cover,
+  });
 
   /// 登录账号
   Future<Session> login({required String email, required String password});
@@ -136,5 +148,30 @@ class ApiImpl implements Api {
   @override
   Future logout({required String sessionId}) {
     return account.deleteSession(sessionId: sessionId);
+  }
+
+  @override
+  Future createArticle({
+    required String userId,
+    required String title,
+    required String categoryId,
+    required String content,
+    required String desc,
+    String? cover,
+  }) async {
+    return databases.createDocument(
+        databaseId: Constants.databaseOfBlog,
+        collectionId: Constants.collectionOfArticle,
+        documentId: ID.unique(),
+        data: {
+          "userId": userId,
+          "publishDate": DateTime.now().millisecondsSinceEpoch,
+          "title": title,
+          "categoryId": categoryId,
+          "content": content,
+          "desc": desc,
+          "type": "markdown",
+          "cover": cover,
+        });
   }
 }

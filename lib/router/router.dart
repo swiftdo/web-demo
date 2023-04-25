@@ -1,11 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:web_demo/pages/about_page.dart';
 import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
+import 'package:web_demo/pages/dashboard/create_article_page.dart';
 import 'package:web_demo/pages/dashboard_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 import 'package:web_demo/pages/search_page.dart';
+import 'package:web_demo/providers/auth_provider.dart';
 
 import '../pages/categories_page.dart';
 import '../pages/error_page.dart';
@@ -27,6 +32,14 @@ class _WebPage extends CustomTransitionPage {
           },
           key: key,
         );
+}
+
+FutureOr<String?> _loginRedirect(BuildContext context, GoRouterState state) {
+  if (context.read<AuthProvider>().isLogin) {
+    return null;
+  } else {
+    return '/login';
+  }
 }
 
 class Router {
@@ -92,9 +105,18 @@ class Router {
       ),
       GoRoute(
         path: '/dashboard',
+        redirect: _loginRedirect,
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: DashboardPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/article/create',
+        redirect: _loginRedirect,
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: CreateArticlePage(),
         ),
       ),
     ],

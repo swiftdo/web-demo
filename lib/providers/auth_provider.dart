@@ -8,6 +8,9 @@ class AuthProvider extends ChangeNotifier {
   User? _account;
   User? get account => _account;
 
+  bool get isLogin =>
+      GetX.spUtil.getString(Constants.keyOfSessionId)?.isNotEmpty == true;
+
   AuthProvider() {
     _getAccount();
   }
