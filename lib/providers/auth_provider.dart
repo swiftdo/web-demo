@@ -32,9 +32,9 @@ class AuthProvider extends ChangeNotifier {
     final sessionId = GetX.spUtil.getString(Constants.keyOfSessionId);
     if (sessionId?.isNotEmpty == true) {
       await GetX.api.logout(sessionId: sessionId!);
-      _account = null;
-      GetX.spUtil.remove(Constants.keyOfSessionId);
-      notifyListeners();
     }
+    _account = null;
+    GetX.spUtil.remove(Constants.keyOfSessionId);
+    notifyListeners();
   }
 }

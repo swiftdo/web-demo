@@ -51,6 +51,7 @@ class ApiImpl implements Api {
     client = Client()
         .setEndpoint(Constants.appwriteEndpoint)
         .setProject(Constants.appwriteProject)
+        .addHeader('Cookie', 'SameSite=None; Secure')
         .setSelfSigned(status: true);
     databases = Databases(client);
     account = Account(client);
