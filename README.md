@@ -4,10 +4,6 @@ Flutter 3.7 快速构建的一个站点样例，长期维护。
 
 在线预览：[https://webdemo.oldbird.run](https://webdemo.oldbird.run)
 
-| light mode                                                    | dark mode                                         |
-|---------------------------------------------------------------|---------------------------------------------------|
-| ![image-light](https://blog.oldbird.run/mweb/image-light.png) | ![](https://blog.oldbird.run/mweb/image-dark.png) |
-
 ## 安装
 
 0. git clone https://github.com/swiftdo/web-demo
