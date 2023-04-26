@@ -48,10 +48,12 @@ class _CreateArticlePageState extends State<CreateArticlePage> {
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-              color: Colors.grey,
-            ))),
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey,
+                ),
+              ),
+            ),
             child: ChangeNotifierProvider(
               create: (ctx) => CategoriesViewModel(),
               builder: (context, child) => Consumer<CategoriesViewModel>(

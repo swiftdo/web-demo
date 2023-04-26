@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:web_demo/pages/about_page.dart';
 import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
+import 'package:web_demo/pages/dashboard/article_list_page.dart';
+import 'package:web_demo/pages/dashboard/category_list_page.dart';
 import 'package:web_demo/pages/dashboard/create_article_page.dart';
 import 'package:web_demo/pages/dashboard_page.dart';
 import 'package:web_demo/pages/home_page.dart';
@@ -117,6 +119,22 @@ class Router {
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: CreateArticlePage(),
+        ),
+      ),
+      GoRoute(
+        path: '/article/list',
+        redirect: _loginRedirect,
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: ArticleListPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/category/list',
+        redirect: _loginRedirect,
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: CategoryListPage(),
         ),
       ),
     ],
