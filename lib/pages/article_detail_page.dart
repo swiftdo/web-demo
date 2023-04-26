@@ -51,6 +51,7 @@ class ArticleDetailPage extends StatelessWidget {
                 ? MarkdownConfig.darkConfig
                 : MarkdownConfig.defaultConfig)
             .copy(configs: [
+          PConfig(textStyle: TextStyle(fontSize: 16, height: 1.68)),
           LinkConfig(
             style: TextStyle(
               color: Colors.red,
