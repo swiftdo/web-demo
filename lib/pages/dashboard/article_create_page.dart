@@ -7,20 +7,40 @@ import 'package:web_demo/providers/auth_provider.dart';
 import '../../models/category.dart';
 import '../categories_viewmodel.dart';
 
-class CreateArticlePage extends StatefulWidget {
-  const CreateArticlePage({Key? key}) : super(key: key);
+class ArticleCreatePage extends StatefulWidget {
+  final String? id;
+  const ArticleCreatePage({Key? key, this.id}) : super(key: key);
 
   @override
-  State<CreateArticlePage> createState() => _CreateArticlePageState();
+  State<ArticleCreatePage> createState() => _ArticleCreatePageState();
 }
 
-class _CreateArticlePageState extends State<CreateArticlePage> {
+class _ArticleCreatePageState extends State<ArticleCreatePage> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
   final TextEditingController coverController = TextEditingController();
 
   String? categoryId;
+
+  @override
+  void initState() {
+    super.initState();
+    loadArticle();
+  }
+
+  loadArticle() async {
+    if (widget.id != null) {
+      final articleModel =
+          await GetX.api.fetchArticleDetail(articleId: widget.id!);
+      titleController.text = articleModel.article.title;
+      descController.text = articleModel.article.desc ?? '';
+      contentController.text = articleModel.article.content;
+      coverController.text = articleModel.article.cover ?? '';
+      categoryId = articleModel.article.categoryId;
+      setState(() {});
+    }
+  }
 
   @override
   void dispose() {
@@ -36,7 +56,7 @@ class _CreateArticlePageState extends State<CreateArticlePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('创建文章'),
+        title: Text(widget.id?.isNotEmpty == true ? '编辑文章' : '创建文章'),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 20),
@@ -117,13 +137,13 @@ class _CreateArticlePageState extends State<CreateArticlePage> {
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(onPressed: onSubmit, child: Text('提交')),
+          ElevatedButton(onPressed: () => onSubmit(context), child: Text('提交')),
         ],
       ),
     );
   }
 
-  onSubmit() {
+  onSubmit(BuildContext context) async {
     final userId = context.read<AuthProvider>().account?.$id;
     if (userId == null) {
       EasyLoading.showError("未登录");
@@ -148,15 +168,27 @@ class _CreateArticlePageState extends State<CreateArticlePage> {
     }
     try {
       EasyLoading.show();
-      // 进行创建文章
-      GetX.api.createArticle(
-          userId: userId,
-          title: titleController.text,
-          categoryId: categoryId!,
-          content: contentController.text,
-          desc: descController.text,
-          cover: coverController.text);
-      EasyLoading.showSuccess("创建成功");
+
+      if (widget.id != null) {
+        await GetX.api.updateArticle(
+            id: widget.id!,
+            title: titleController.text,
+            categoryId: categoryId!,
+            content: contentController.text,
+            desc: descController.text,
+            cover: coverController.text);
+        EasyLoading.showSuccess("更新成功");
+      } else {
+        // 进行创建文章
+        await GetX.api.createArticle(
+            userId: userId,
+            title: titleController.text,
+            categoryId: categoryId!,
+            content: contentController.text,
+            desc: descController.text,
+            cover: coverController.text);
+        EasyLoading.showSuccess("创建成功");
+      }
       titleController.clear();
       contentController.clear();
       descController.clear();

@@ -14,19 +14,20 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplatePage(
-        child: ChangeNotifierProvider(
-      create: (_) => ArticleListViewModel(),
-      builder: (context, child) => Consumer<ArticleListViewModel>(
-        builder: (context, model, child) {
-          return Column(
-            children: [
-              PageHeader(title: "文章", canBack: false),
-              Expanded(child: _buildContent(context, model))
-            ],
-          );
-        },
+      child: ChangeNotifierProvider(
+        create: (_) => ArticleListViewModel(),
+        builder: (context, child) => Consumer<ArticleListViewModel>(
+          builder: (context, model, child) {
+            return Column(
+              children: [
+                PageHeader(title: "文章", canBack: false),
+                Expanded(child: _buildContent(context, model))
+              ],
+            );
+          },
+        ),
       ),
-    ));
+    );
   }
 
   _buildContent(BuildContext context, ArticleListViewModel model) {

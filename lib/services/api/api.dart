@@ -47,11 +47,24 @@ abstract class Api {
     String? cover,
   });
 
+  /// 更新文章
+  Future updateArticle({
+    required String id,
+    required String title,
+    required String categoryId,
+    required String content,
+    required String desc,
+    String? cover,
+  });
+
   /// 登录账号
   Future<Session> login({required String email, required String password});
 
   /// 登出
   Future logout({required String sessionId});
+
+  /// 删除文章
+  Future deleteArticle(String articleId);
 }
 
 class ApiImpl implements Api {
@@ -173,5 +186,35 @@ class ApiImpl implements Api {
           "type": "markdown",
           "cover": cover,
         });
+  }
+
+  @override
+  Future updateArticle(
+      {required String id,
+      required String title,
+      required String categoryId,
+      required String content,
+      required String desc,
+      String? cover}) {
+    return databases.updateDocument(
+        databaseId: Constants.databaseOfBlog,
+        collectionId: Constants.collectionOfArticle,
+        documentId: id,
+        data: {
+          "title": title,
+          "categoryId": categoryId,
+          "content": content,
+          "desc": desc,
+          "cover": cover,
+          "lastModifyDate": DateTime.now().millisecondsSinceEpoch,
+        });
+  }
+
+  @override
+  Future deleteArticle(String articleId) {
+    return databases.deleteDocument(
+        databaseId: Constants.databaseOfBlog,
+        collectionId: Constants.collectionOfArticle,
+        documentId: articleId);
   }
 }

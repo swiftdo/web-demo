@@ -8,7 +8,7 @@ import 'package:web_demo/pages/article_detail_page.dart';
 import 'package:web_demo/pages/category_articles_page.dart';
 import 'package:web_demo/pages/dashboard/article_list_page.dart';
 import 'package:web_demo/pages/dashboard/category_list_page.dart';
-import 'package:web_demo/pages/dashboard/create_article_page.dart';
+import 'package:web_demo/pages/dashboard/article_create_page.dart';
 import 'package:web_demo/pages/dashboard_page.dart';
 import 'package:web_demo/pages/home_page.dart';
 import 'package:web_demo/pages/search_page.dart';
@@ -118,7 +118,17 @@ class Router {
         redirect: _loginRedirect,
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
-          child: CreateArticlePage(),
+          child: ArticleCreatePage(),
+        ),
+      ),
+      GoRoute(
+        path: '/article/edit/:id',
+        redirect: _loginRedirect,
+        pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
+          key: state.pageKey,
+          child: ArticleCreatePage(
+            id: state.params['id'],
+          ),
         ),
       ),
       GoRoute(

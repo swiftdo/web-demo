@@ -58,6 +58,11 @@ abstract class ViewStateRefreshListModel<T> extends ViewStateListModel<T> {
   // 加载数据
   Future<List<T>> loadData({int pageNum = 1});
 
+  removeItem(T item) {
+    list.remove(item);
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     super.dispose();
