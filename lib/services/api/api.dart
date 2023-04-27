@@ -45,6 +45,7 @@ abstract class Api {
     required String content,
     required String desc,
     String? cover,
+    String? originalLink,
   });
 
   /// 更新文章
@@ -55,6 +56,7 @@ abstract class Api {
     required String content,
     required String desc,
     String? cover,
+    String? originalLink,
   });
 
   /// 登录账号
@@ -171,6 +173,7 @@ class ApiImpl implements Api {
     required String content,
     required String desc,
     String? cover,
+    String? originalLink,
   }) async {
     return databases.createDocument(
         databaseId: Constants.databaseOfBlog,
@@ -185,17 +188,20 @@ class ApiImpl implements Api {
           "desc": desc,
           "type": "markdown",
           "cover": cover,
+          "originalLink": originalLink,
         });
   }
 
   @override
-  Future updateArticle(
-      {required String id,
-      required String title,
-      required String categoryId,
-      required String content,
-      required String desc,
-      String? cover}) {
+  Future updateArticle({
+    required String id,
+    required String title,
+    required String categoryId,
+    required String content,
+    required String desc,
+    String? cover,
+    String? originalLink,
+  }) {
     return databases.updateDocument(
         databaseId: Constants.databaseOfBlog,
         collectionId: Constants.collectionOfArticle,
@@ -207,6 +213,7 @@ class ApiImpl implements Api {
           "desc": desc,
           "cover": cover,
           "lastModifyDate": DateTime.now().millisecondsSinceEpoch,
+          "originalLink": originalLink,
         });
   }
 

@@ -32,6 +32,7 @@ mixin _$Article {
   String get content => throw _privateConstructorUsedError;
   int get viewCount => throw _privateConstructorUsedError;
   int get likeCount => throw _privateConstructorUsedError;
+  String? get originalLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $ArticleCopyWith<$Res> {
       String categoryId,
       String content,
       int viewCount,
-      int likeCount});
+      int likeCount,
+      String? originalLink});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     Object? content = null,
     Object? viewCount = null,
     Object? likeCount = null,
+    Object? originalLink = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -127,6 +130,10 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
               as int,
+      originalLink: freezed == originalLink
+          ? _value.originalLink
+          : originalLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -149,7 +156,8 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       String categoryId,
       String content,
       int viewCount,
-      int likeCount});
+      int likeCount,
+      String? originalLink});
 }
 
 /// @nodoc
@@ -173,6 +181,7 @@ class __$$_ArticleCopyWithImpl<$Res>
     Object? content = null,
     Object? viewCount = null,
     Object? likeCount = null,
+    Object? originalLink = freezed,
   }) {
     return _then(_$_Article(
       id: null == id
@@ -219,6 +228,10 @@ class __$$_ArticleCopyWithImpl<$Res>
           ? _value.likeCount
           : likeCount // ignore: cast_nullable_to_non_nullable
               as int,
+      originalLink: freezed == originalLink
+          ? _value.originalLink
+          : originalLink // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -237,7 +250,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
       required this.categoryId,
       required this.content,
       this.viewCount = 0,
-      this.likeCount = 0});
+      this.likeCount = 0,
+      this.originalLink});
 
   factory _$_Article.fromJson(Map<String, dynamic> json) =>
       _$$_ArticleFromJson(json);
@@ -267,10 +281,12 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
   @override
   @JsonKey()
   final int likeCount;
+  @override
+  final String? originalLink;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Article(id: $id, userId: $userId, publishDate: $publishDate, lastModifyDate: $lastModifyDate, title: $title, cover: $cover, desc: $desc, categoryId: $categoryId, content: $content, viewCount: $viewCount, likeCount: $likeCount)';
+    return 'Article(id: $id, userId: $userId, publishDate: $publishDate, lastModifyDate: $lastModifyDate, title: $title, cover: $cover, desc: $desc, categoryId: $categoryId, content: $content, viewCount: $viewCount, likeCount: $likeCount, originalLink: $originalLink)';
   }
 
   @override
@@ -288,7 +304,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
       ..add(DiagnosticsProperty('categoryId', categoryId))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('viewCount', viewCount))
-      ..add(DiagnosticsProperty('likeCount', likeCount));
+      ..add(DiagnosticsProperty('likeCount', likeCount))
+      ..add(DiagnosticsProperty('originalLink', originalLink));
   }
 
   @override
@@ -311,7 +328,9 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
             (identical(other.viewCount, viewCount) ||
                 other.viewCount == viewCount) &&
             (identical(other.likeCount, likeCount) ||
-                other.likeCount == likeCount));
+                other.likeCount == likeCount) &&
+            (identical(other.originalLink, originalLink) ||
+                other.originalLink == originalLink));
   }
 
   @JsonKey(ignore: true)
@@ -328,7 +347,8 @@ class _$_Article with DiagnosticableTreeMixin implements _Article {
       categoryId,
       content,
       viewCount,
-      likeCount);
+      likeCount,
+      originalLink);
 
   @JsonKey(ignore: true)
   @override
@@ -356,7 +376,8 @@ abstract class _Article implements Article {
       required final String categoryId,
       required final String content,
       final int viewCount,
-      final int likeCount}) = _$_Article;
+      final int likeCount,
+      final String? originalLink}) = _$_Article;
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
 
@@ -383,6 +404,8 @@ abstract class _Article implements Article {
   int get viewCount;
   @override
   int get likeCount;
+  @override
+  String? get originalLink;
   @override
   @JsonKey(ignore: true)
   _$$_ArticleCopyWith<_$_Article> get copyWith =>

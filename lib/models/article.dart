@@ -18,6 +18,7 @@ class Article with _$Article {
     required String content,
     @Default(0) int viewCount,
     @Default(0) int likeCount,
+    String? originalLink, // 原文链接
   }) = _Article;
 
   factory Article.fromJson(Map<String, dynamic> json) =>

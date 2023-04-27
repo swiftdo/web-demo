@@ -6,8 +6,8 @@ Flutter 3.7 快速构建的一个站点样例，长期维护。
 
 ## 安装
 
-0. git clone https://github.com/swiftdo/web-demo
-1. 安装 fvm 工具: [leoafarias/fvm](https://github.com/leoafarias/fvm)
+1. git clone https://github.com/swiftdo/web-demo
+2. 安装 fvm 工具: [leoafarias/fvm](https://github.com/leoafarias/fvm)
 
    ```sh
    $ cd web-demo

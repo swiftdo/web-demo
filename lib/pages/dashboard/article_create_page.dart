@@ -20,6 +20,7 @@ class _ArticleCreatePageState extends State<ArticleCreatePage> {
   final TextEditingController descController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
   final TextEditingController coverController = TextEditingController();
+  final TextEditingController originalLinkController = TextEditingController();
 
   String? categoryId;
 
@@ -37,6 +38,7 @@ class _ArticleCreatePageState extends State<ArticleCreatePage> {
       descController.text = articleModel.article.desc ?? '';
       contentController.text = articleModel.article.content;
       coverController.text = articleModel.article.cover ?? '';
+      originalLinkController.text = articleModel.article.originalLink ?? '';
       categoryId = articleModel.article.categoryId;
       setState(() {});
     }
@@ -48,6 +50,7 @@ class _ArticleCreatePageState extends State<ArticleCreatePage> {
     descController.dispose();
     contentController.dispose();
     coverController.dispose();
+    originalLinkController.dispose();
     super.dispose();
   }
 
@@ -119,6 +122,11 @@ class _ArticleCreatePageState extends State<ArticleCreatePage> {
             decoration: InputDecoration(hintText: '文章封面url'),
             controller: coverController,
           ),
+          // 封面url
+          TextField(
+            decoration: InputDecoration(hintText: '原文url'),
+            controller: originalLinkController,
+          ),
           // 简介
           TextField(
             decoration: InputDecoration(hintText: '文章简介'),
@@ -171,28 +179,33 @@ class _ArticleCreatePageState extends State<ArticleCreatePage> {
 
       if (widget.id != null) {
         await GetX.api.updateArticle(
-            id: widget.id!,
-            title: titleController.text,
-            categoryId: categoryId!,
-            content: contentController.text,
-            desc: descController.text,
-            cover: coverController.text);
+          id: widget.id!,
+          title: titleController.text,
+          categoryId: categoryId!,
+          content: contentController.text,
+          desc: descController.text,
+          cover: coverController.text,
+          originalLink: originalLinkController.text,
+        );
         EasyLoading.showSuccess("更新成功");
       } else {
         // 进行创建文章
         await GetX.api.createArticle(
-            userId: userId,
-            title: titleController.text,
-            categoryId: categoryId!,
-            content: contentController.text,
-            desc: descController.text,
-            cover: coverController.text);
+          userId: userId,
+          title: titleController.text,
+          categoryId: categoryId!,
+          content: contentController.text,
+          desc: descController.text,
+          cover: coverController.text,
+          originalLink: originalLinkController.text,
+        );
         EasyLoading.showSuccess("创建成功");
       }
       titleController.clear();
       contentController.clear();
       descController.clear();
       coverController.clear();
+      originalLinkController.clear();
     } catch (e) {
       EasyLoading.showError(e.toString());
     }

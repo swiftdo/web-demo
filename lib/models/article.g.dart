@@ -18,6 +18,7 @@ _$_Article _$$_ArticleFromJson(Map<String, dynamic> json) => _$_Article(
       content: json['content'] as String,
       viewCount: json['viewCount'] as int? ?? 0,
       likeCount: json['likeCount'] as int? ?? 0,
+      originalLink: json['originalLink'] as String?,
     );
 
 Map<String, dynamic> _$$_ArticleToJson(_$_Article instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$_ArticleToJson(_$_Article instance) =>
       'content': instance.content,
       'viewCount': instance.viewCount,
       'likeCount': instance.likeCount,
+      'originalLink': instance.originalLink,
     };
