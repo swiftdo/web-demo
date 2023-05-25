@@ -174,7 +174,7 @@ class ViewStateUnAuthImage extends StatelessWidget {
         width: 130,
         height: 100,
         fit: BoxFit.fitWidth,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         colorBlendMode: BlendMode.srcIn,
       ),
     );

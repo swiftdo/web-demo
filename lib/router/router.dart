@@ -71,7 +71,7 @@ class Router {
         path: '/detail/:id',
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
-          child: ArticleDetailPage(articleId: state.params['id']!),
+          child: ArticleDetailPage(articleId: state.pathParameters['id']!),
         ),
       ),
       GoRoute(
@@ -79,8 +79,8 @@ class Router {
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: CategoryArticlesPage(
-            categoryId: state.params['id']!,
-            params: state.queryParams,
+            categoryId: state.pathParameters['id']!,
+            params: state.queryParameters,
           ),
         ),
       ),
@@ -127,7 +127,7 @@ class Router {
         pageBuilder: (BuildContext context, GoRouterState state) => _WebPage(
           key: state.pageKey,
           child: ArticleCreatePage(
-            id: state.params['id'],
+            id: state.pathParameters['id'],
           ),
         ),
       ),
