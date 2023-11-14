@@ -31,8 +31,7 @@ class MyApp extends StatelessWidget {
         builder: (context, model, child) {
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            routerDelegate: GetX.router.routerDelegate,
-            routeInformationParser: GetX.router.routeInformationParser,
+            routerConfig: GetX.router.router,
             theme: context.currentTheme,
             builder: EasyLoading.init(),
           );

@@ -45,11 +45,6 @@ FutureOr<String?> _loginRedirect(BuildContext context, GoRouterState state) {
 }
 
 class Router {
-  RouterDelegate<Object> get routerDelegate => router.routerDelegate;
-
-  RouteInformationParser<Object> get routeInformationParser =>
-      router.routeInformationParser;
-
   final GoRouter router = GoRouter(
     observers: [MyNavObserver()],
     routes: <GoRoute>[
@@ -80,7 +75,7 @@ class Router {
           key: state.pageKey,
           child: CategoryArticlesPage(
             categoryId: state.pathParameters['id']!,
-            params: state.queryParameters,
+            params: state.uri.queryParameters,
           ),
         ),
       ),

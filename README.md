@@ -1,6 +1,6 @@
 # web_demo
 
-Flutter 3.10.1 快速构建的一个站点样例，长期维护。
+Flutter 3.13 快速构建的一个站点样例，长期维护。
 
 在线预览：[https://webdemo.oldbird.run](https://webdemo.oldbird.run)
 
