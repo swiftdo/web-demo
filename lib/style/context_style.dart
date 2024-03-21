@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_demo/style/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:web_demo/style/theme_provider.dart';
 
 extension ContextStyle on BuildContext {
   bool get isDarkTheme => this.read<ThemeProvider>().isDark;

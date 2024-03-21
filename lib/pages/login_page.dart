@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:web_demo/locator.dart';
 import 'package:web_demo/providers/auth_provider.dart';
 
 class LoginPage extends StatefulWidget {

@@ -1,11 +1,10 @@
-import 'package:web_demo/core/util/date_util.dart';
+import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart';
+import 'package:web_demo/constants.dart';
 
 import '../../models/article.dart';
 import '../../models/category.dart';
 import '../../models/models.dart';
-import 'package:web_demo/constants.dart';
-import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart';
 
 abstract class Api {
   /// 获取文章列表
@@ -157,7 +156,7 @@ class ApiImpl implements Api {
 
   @override
   Future<Session> login({required String email, required String password}) {
-    return account.createEmailSession(email: email, password: password);
+    return account.createEmailPasswordSession(email: email, password: password);
   }
 
   @override

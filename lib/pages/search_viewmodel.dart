@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import '../core/provider/view_state_refresh_list_model.dart';
-import '../core/util/value_util.dart';
 import '../locator.dart';
 import '../models/models.dart';
 import '../services/api/api.dart';
@@ -26,6 +23,9 @@ class SearchViewModel extends ViewStateRefreshListModel {
   @override
   Future<List<ArticleModel>> loadData({int pageNum = 1}) async {
     return await api.searchArticleList(
-        pageNo: pageNum, pageSize: pageSize, searchKey: _searchKey,);
+      pageNo: pageNum,
+      pageSize: pageSize,
+      searchKey: _searchKey,
+    );
   }
 }
