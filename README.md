@@ -80,3 +80,8 @@ location @router {
 Flutter Web 的 SEO 能力支持不友好。
 
 可关注该问题 [How Manage SEO In flutter web?](https://stackoverflow.com/questions/71634738/how-manage-seo-in-flutter-web)
+
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/swiftdo/web-demo.svg?variant=adaptive)](https://starchart.cc/swiftdo/web-demo)
+
