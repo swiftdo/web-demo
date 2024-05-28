@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:web_demo/style/theme_provider.dart';
 
 extension ContextStyle on BuildContext {
-  bool get isDarkTheme => this.read<ThemeProvider>().isDark;
+  bool get isDarkTheme => this.watch<ThemeProvider>().isDark;
 
   Color get primaryColor => const Color(0xffEF5138);
 
